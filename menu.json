@@ -9,7 +9,7 @@
 	},
 	{
 		"name":"SHOPPING",
-		"link":"pages/listCategories.html?cat=shopping"
+		"link":"pages/listCategories.html"
 	},
 	{
 		"name":"FLIGHTS",
