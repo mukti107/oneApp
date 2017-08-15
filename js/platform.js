@@ -37,6 +37,10 @@ var requirejs,require,define;!function(global,setTimeout){function commentReplac
 			$("head").append(link);
 	}
 
+	if(params["title"]){
+		document.title=params["title"];
+	}
+
 
 function displayList($data, $to, $template_name){
 	
