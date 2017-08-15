@@ -5,7 +5,11 @@
 	},
 	{
 		"name":"HOTELS",
-		"link":"hotels.html"
+		"link":"list.html"
+	},
+	{
+		"name":"SHOPPING",
+		"link":"listCategories.html?cat=shopping"
 	},
 	{
 		"name":"FLIGHTS",
