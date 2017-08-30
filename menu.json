@@ -4,28 +4,8 @@
 		"link":"index.html"
 	},
 	{
-		"name":"HOTELS",
+		"name":"NEWS",
 		"link":"list.html"
-	},
-	{
-		"name":"SHOPPING",
-		"link":"pages/listCategories.html"
-	},
-	{
-		"name":"FLIGHTS",
-		"link":"index.html"
-	},
-	{
-		"name":"FUTSAL",
-		"link":"contact_us.html"
-	},
-	{
-		"name":"HOME",
-		"link":"index.html"
-	},
-	{
-		"name":"CONTACT US",
-		"link":"contact_us.html"
 	}
 
 ]
