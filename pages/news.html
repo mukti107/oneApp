@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact US</title>
+	<script type="text/javascript" src="../js/platform.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+      $.ajax({
+        type:"GET",
+        url:"http://onlinekhabar.com/feed",
+        dataType:"xml",
+        headers: {
+          "My-First-Header":"first value",
+          "My-Second-Header":"second value"
+        },
+        success:function(response){
+            $("#hotels").html(xml2json(response));
+        }
+      });
+
+      displayList(
+        {link:"?cat=123",
+          items:
+          [
+            {name:"apple",link:"?cat=123&title=Apple"},
+            {name:"ball",link:"?cat=123&title=Ball"},
+            {name:"cat",link:"?cat=123&title=Cat"}
+          ]
+        },
+        "#hotels");
+    });
+  </script>
+</head>
+<body>
+
+<H1>Hotels</H1>
+	
+
+<div class="list-block" id="hotels">
+
+</div>   
+</body>
+</html>
