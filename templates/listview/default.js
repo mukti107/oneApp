@@ -1,7 +1,7 @@
 define({
 	template:` <ul>
 					{{#items}}
-						<li><a href="{{link}}">{{name}}</a></li>
+						<li><a href="{{link}}">{{title}}</a></li>
 					{{/items}}
 				</ul>
 			`

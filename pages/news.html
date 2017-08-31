@@ -8,27 +8,20 @@
 
       $.ajax({
         type:"GET",
-        url:"http://onlinekhabar.com/feed",
-        dataType:"xml",
-        headers: {
-          "My-First-Header":"first value",
-          "My-Second-Header":"second value"
-        },
+        url:"https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent("https://www.onlinekhabar.com/feed"),
+        dataType:"json",
+        
         success:function(response){
-            $("#hotels").html(xml2json(response));
+          console.log(response)
+            displayList(
+        response,
+        "#hotels");
         }
       });
 
-      displayList(
-        {link:"?cat=123",
-          items:
-          [
-            {name:"apple",link:"?cat=123&title=Apple"},
-            {name:"ball",link:"?cat=123&title=Ball"},
-            {name:"cat",link:"?cat=123&title=Cat"}
-          ]
-        },
-        "#hotels");
+      //$.load("http://www.feedforall.com/sample.xml","#hotels");
+
+      
     });
   </script>
 </head>
