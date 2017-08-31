@@ -83,8 +83,9 @@ function xml2json(xml) {
   }
 }
 
-function ajaxLoad(url,data,callback){
-	location.href="oneapp://ajaxLoad?url="+encodeURIComponent(url)+"&data="+encodeURIComponent(data)+"&callback="+callback
-}
+$(document).ready(function(){
+	$("body").addClass("page-content");
+});
+
 
 

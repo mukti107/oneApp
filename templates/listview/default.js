@@ -1,10 +1,7 @@
 define({
 	template:` <ul>
 					{{#items}}
-						<li><a href="{{link}}" traget="_blank"><h2>{{title}}</h2></a></li>
-						<hr>
-						<li><a href="{{link}}"><h2>{{title}}</h2></a></li>
-						<hr><hr>
+						<li><a href="{{link}}_newPage" ><h2>{{title}}</h2></a></li>
 					{{/items}}
 				</ul>
 			`
