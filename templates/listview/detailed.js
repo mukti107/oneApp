@@ -2,7 +2,7 @@ define({
 	template:`<ul>
 				{{#items}}
 				<li >
-					<a href="#" class="item-link item-content">
+					<a href="{{link}}_newPage" class="item-link item-content">
 				        <div class="item-inner">
 				          <div class="item-title-row">
 				            <div class="item-title">{{title}}</div>
