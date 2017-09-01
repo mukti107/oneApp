@@ -6,7 +6,7 @@ define({
 				        <div class="item-inner">
 				          <div class="item-title-row">
 				            <div class="item-title">{{title}}</div>
-				            <div class="item-after">{{pubDate}}</div>
+				            
 				          </div>
 				          <div class="item-subtitle">{{categories}} | {{author}}</div>
 				          <div class="item-text">{{description}}</div>
@@ -17,3 +17,5 @@ define({
 			</ul>
 			`
 })
+
+//<div class="item-after">{{pubDate}}</div>
