@@ -13,13 +13,10 @@
         
         success:function(response){
           console.log(response)
-            displayList(
-        response,
-        "#hotels");
+            displayList(response,"#hotels","detailed");
         }
       });
 
-      //$.load("http://www.feedforall.com/sample.xml","#hotels");
 
       
     });
@@ -30,7 +27,7 @@
 <H1>News Feeds</H1>
 	
 
-<div class="list-block" id="hotels">
+<div class="list-block media-list" id="hotels">
 
 </div>   
 
