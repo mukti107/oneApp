@@ -85,7 +85,7 @@ function xml2json(xml) {
 }
 
 $(document).ready(function(){
-	$("body").addClass("page-content");
+	// $("body").addClass("page-content");
 });
 
 
