@@ -10,11 +10,12 @@
 		});
 
 		function onReceiveUserToken(token){
-			alert(token);
-
-			setTimout(function(){command("dismissProgress")},4000);
+			//alert(token);
 
 			command("showProgress");
+			setTimout(function(){command("dismissProgress")},4000);
+
+			
 		}
 
 	</script>
