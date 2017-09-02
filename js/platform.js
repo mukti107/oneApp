@@ -89,4 +89,9 @@ $(document).ready(function(){
 });
 
 
+function getUserToken(){
+	location.href="oneapp://userToken";
+}
+
+
 
