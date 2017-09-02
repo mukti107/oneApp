@@ -88,10 +88,10 @@ $(document).ready(function(){
 	// $("body").addClass("page-content");
 });
 
+function command(){
+	location.href="oneapp://"+command;
+}
 
 function getUserToken(){
 	location.href="oneapp://userToken";
 }
-
-
-
