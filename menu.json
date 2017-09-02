@@ -6,6 +6,10 @@
 	{
 		"name":"NEWS",
 		"link":"news.html"
+	},
+	{
+		"name":"Scan Recharge Card",
+		"link":"oneapp://rechargeCardScanner"
 	}
 
 ]

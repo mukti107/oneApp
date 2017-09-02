@@ -11,11 +11,9 @@
 
 		function onReceiveUserToken(token){
 			//alert(token);
-
 			command("showProgress");
-			setTimout(function(){command("dismissProgress")},4000);
 
-			
+			setTimeout(function(){command("dismissProgress");},4000);
 		}
 
 	</script>
@@ -25,5 +23,7 @@
 
 	<a href="oneapp://toggleMenu"><i class="icon f7-icons">bars</i></a>
 	<a href="oneapp://facebookLogin">Login With Facebook</a>
+	<a href="oneapp://rechargeCardScanner">Scanner</a>
+
 </body>
 </html>
