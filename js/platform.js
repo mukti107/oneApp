@@ -84,9 +84,9 @@ function xml2json(xml) {
   }
 }
 
-$(document).ready(function(){
-	// $("body").addClass("page-content");
-});
+// $(document).ready(function(){
+// 	// $("body").addClass("page-content");
+// });
 
 function command(action){
 	location.href="oneapp://"+action;
