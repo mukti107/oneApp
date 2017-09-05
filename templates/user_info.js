@@ -1,6 +1,6 @@
 define({
 	template:`
-				hello there {{name}}
+				Hello, {{name}}
 			`
 })
 
