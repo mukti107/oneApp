@@ -63,11 +63,9 @@ var requirejs,require,define;!function(global,setTimeout){function commentReplac
 function displayList($data, $to, $template_name){
 	
 	$template_name=$template_name||"default";
-	var template_path=ROOT_DIR+"templates/listview/"+$template_name;
-	requirejs([template_path],function(resp){
-		var $template=Mustache.render(resp.template,$data);
-		$($to).html($template);
-	});
+	var $template="listview/"+$template_name;
+
+	renderTemplate($data,$to,$template)
 }
 
 
