@@ -9,8 +9,8 @@ define({
 						    <div class="card-content-inner">
 					    		<div class="row">
 							        <div class="col-30 text-center">Max Price <br/> Rs. {{max_price}}</div>
-							        <div class="col-30">Min Price  <br/> Rs. {{min_price}}</div>
-							        <div class="col-40">Closing Price  <br/> Rs. {{closing_price}}</div>
+							        <div class="col-30 text-center">Min Price  <br/> Rs. {{min_price}}</div>
+							        <div class="col-40 text-center">Closing Price  <br/> Rs. {{closing_price}}</div>
 							    </div>
 						    </div>
 						  </div>
