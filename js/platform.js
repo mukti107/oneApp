@@ -61,12 +61,22 @@ var requirejs,require,define;!function(global,setTimeout){function commentReplac
 function displayList($data, $to, $template_name){
 	
 	$template_name=$template_name||"default";
-	var template_path="../templates/listview/"+$template_name;
-	
+	var template_path=ROOT_DIR+"/templates/listview/"+$template_name;
 	requirejs([template_path],function(resp){
 		var $template=Mustache.render(resp.template,$data);
 		$($to).html($template);
 	});
+}
+
+
+function renderTemplate($data,$to,$template){
+
+	var template_path=ROOT_DIR+"/templates/"+$template;
+	requirejs([template_path],function(resp){
+		var $template=Mustache.render(resp.template,$data);
+		$($to).html($template);
+	});
+
 }
 
 
@@ -99,13 +109,7 @@ function xml2json(xml) {
   }
 }
 
-// $(document).ready(function(){
-// 	// $("body").addClass("page-content");
-// });
-
 function command(action){
-
-
 	var iframe = document.createElement("IFRAME");
     iframe.setAttribute("src", "oneapp://"+action);
     document.documentElement.appendChild(iframe);  // Execution NOT blocking here either :(

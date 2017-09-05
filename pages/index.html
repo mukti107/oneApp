@@ -4,33 +4,34 @@
 	<title>Home</title>
 
 	<script type="text/javascript" src="../js/platform.js"></script>
-
 	<script type="text/javascript">
-		
 		enableNavBar="NO";
 
+
+
 		$(document).ready(function(){
+			onReceiveUserToken('abc');
 			getUserToken();
-
-			
-
 		});
 
 		function onReceiveUserToken(token){
-			if(token)
+			if(token.length){
 				$.ajax({
 					url:apiBaseUrl+"/user",
 					dataType:"json",
 					success:function(response){
+						renderTemplate(response,"#user_info","user_info")
 						alert(JSON.stringify(response));
 					},
 					error:function(err,stat,resp){
+						renderTemplate(response,"#user_info","user_info")
 						console.log(err,stat,resp)
 					},
 					headers:{
 						"Authorization"	:"Bearer "+token
 					}
 				});
+			}
 		}
 
 
@@ -55,6 +56,8 @@
 </head>
 <body>
 	<h1>Welcome, Guest User</h1>
+
+	<div id="user_info">
 
 	<a href="oneapp://toggleMenu"><i class="icon f7-icons">bars</i></a>
 	<a href="oneapp://facebookLogin">Login With Facebook</a><br/>
