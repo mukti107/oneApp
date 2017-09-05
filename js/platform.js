@@ -1,5 +1,6 @@
 var platform="material";
 var apiBaseUrl="http://192.168.100.5:8000/api";
+var enableNavBar="YES";
 
 //url parameters
 var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v})
