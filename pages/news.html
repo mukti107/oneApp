@@ -12,7 +12,6 @@
         dataType:"json",
         
         success:function(response){
-          console.log(response)
             displayList(response,"#hotels","detailed");
         },
         beforeSend:function(){command("showProgress")},

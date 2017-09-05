@@ -4,12 +4,16 @@
 		"link":"index.html"
 	},
 	{
+		"name":"Scan Recharge Card",
+		"link":"oneapp://rechargeCardScanner"
+	},
+	{
 		"name":"NEWS",
 		"link":"news.html"
 	},
 	{
-		"name":"Scan Recharge Card",
-		"link":"oneapp://rechargeCardScanner"
+		"name":"STOCK MARKET",
+		"link":"nepse.html"
 	}
 
 ]

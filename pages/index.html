@@ -6,23 +6,55 @@
 	<script type="text/javascript">
 		
 		$(document).ready(function(){
-			getUserToken();
+			onReceiveUserToken("ads");
+			//getUserToken();
+		 	//facebookLogin("EAAB8I01c3okBAD4wamdNcvRD5yCVxkeaY8mwPmmgdZBv696VekMdkc2llM5hk65dHF0QdNK4FoJLvxobBQZCMik1BeuZAUDO6qVqyo3cKMZCVEBZCc2sp1iEbNk1ln7XqK68zXcZAJUeQd9SEnni62fTtEJZAkxlHMlyDUFZAO8ySQSYtipZC5ofRzsAfjQFktYMVMFMMAmtnhhoLH88yrMoeyKL3F9JLb2jZCLTGrg7ipgjMK6dsnCHhp");
+
 		});
 
 		function onReceiveUserToken(token){
-			//alert(token);
-			command("showProgress");
+			//if(token)
+				$.ajax({
+					url:apiBaseUrl+"/user",
+					dataType:"json",
+					success:function(response){
+						alert(JSON.stringify(response));
+					},
+					error:function(err,stat,resp){
+						console.log(err,stat,resp)
+					},
+					headers:{
+						"Authorization"	:"Bearer "+token
+					}
+				});
+				//alert(token)
+		}
 
-			setTimeout(function(){command("dismissProgress");},4000);
+
+		function facebookLogin(token){
+			$.ajax({
+				url:apiBaseUrl+"/login",
+				method:"GET",
+				data:{fb_token:token},
+				dataType:"json",
+				success:function(resp){
+					command("saveValues?access_token="+resp.access_token+"&refresh_token="+resp.refresh_token);
+				},
+				error:function(err){
+					alert("Error logging in");
+				},
+				beforeSend:function(){command("showProgress");},
+		        complete:function(xhr){command("dismissProgress");}
+			});
 		}
 
 	</script>
 </head>
-<body bgcolor="red" class="page-content">
+<body>
 	<h1>Welcome, Guest User</h1>
 
 	<a href="oneapp://toggleMenu"><i class="icon f7-icons">bars</i></a>
-	<a href="oneapp://facebookLogin">Login With Facebook</a>
+	<a href="oneapp://facebookLogin">Login With Facebook</a><br/>
 	<a href="oneapp://rechargeCardScanner">Scanner</a>
 
 </body>

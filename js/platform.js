@@ -1,4 +1,5 @@
 var platform="material";
+var apiBaseUrl="http://192.168.100.5:8000/api";
 
 //url parameters
 var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v})
@@ -89,9 +90,35 @@ function xml2json(xml) {
 // });
 
 function command(action){
-	location.href="oneapp://"+action;
+
+
+	var iframe = document.createElement("IFRAME");
+    iframe.setAttribute("src", "oneapp://"+action);
+    document.documentElement.appendChild(iframe);  // Execution NOT blocking here either :(
+    iframe.parentNode.removeChild(iframe);
+    iframe = null;
+
 }
 
 function getUserToken(){
-	location.href="oneapp://userToken";
+	command("userToken");
+	///location.href="oneapp://userToken";
 }
+
+
+function tableTOJSON($table,$keys){
+	var myRows = [];
+	var $headers = $("th",$table);
+	var $rows = $("tbody tr",$table).each(function(index) {
+	  $cells = $(this).find("td");
+	  var thisRow = {};
+	  $cells.each(function(cellIndex) {
+	    thisRow[$keys[cellIndex]||$($headers[cellIndex]).html()] = $(this).html();
+	  }); 
+	  if(Object.keys(thisRow).length>0)
+	  	myRows.push(thisRow);   
+	});
+	return myRows;
+}
+
+
