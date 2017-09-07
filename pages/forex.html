@@ -23,7 +23,7 @@
 
           $page=$(response.contents);
 
-          $fixed= tableTOJSON( $("table",$page)[4].outerHTML,['cur',"unit","bp","sp"] ) ;
+          $fixed= tableTOJSON( $("table",$page)[4].outerHTML,['currency',"unit","buyingRate","sellingRate"] ) ;
           $fixed.splice(0,2)
 
           $open= tableTOJSON( $("table",$page)[5].outerHTML,['currency',"unit","buyingRate","sellingRate"] ) ;
