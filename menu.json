@@ -12,8 +12,13 @@
 		"link":"news.html"
 	},
 	{
-		"name":"STOCK MARKET",
+		"name":"STOCK EXCHANGE",
 		"link":"nepse.html"
+	},
+	,
+	{
+		"name":"FOREX",
+		"link":"forex.html"
 	}
 
 ]

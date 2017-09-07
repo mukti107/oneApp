@@ -17,19 +17,23 @@
       $.ajax({
         type:"GET",
         url:"http://anyorigin.com/go",
-         data:{url:"http://www.nepalstock.com/todaysprice/export"},
+         data:{url:"https://www.nrb.org.np/fxmexchangerate.php"},
          dataType:"jsonp",
         success:function(response){
 
-          var list=tableTOJSON($(response.contents),["name","num_transaction","max_price","min_price","closing_price","traded_shares","amount","previous_closing","difference"]);
+          $page=$(response.contents);
 
-          $.map(list,function(el){
-            el.increased = el.difference>0; 
-            el.difference = Math.abs(el.difference); 
-          });
+          $fixed= tableTOJSON( $("table",$page)[4].outerHTML,['cur',"unit","bp","sp"] ) ;
+          $fixed.splice(0,2)
 
-          displayList({items:list},"#content","nepse");
-          // $("h1").html(JSON.stringify()));
+          $open= tableTOJSON( $("table",$page)[5].outerHTML,['currency',"unit","buyingRate","sellingRate"] ) ;
+          $open.splice(0,2)
+
+          console.log($fixed,$open);
+
+          renderTemplate({fixedRate:$fixed,openMarketRate:$open},"#content","forex")
+
+
         },
         beforeSend:function(){command("showProgress")},
         complete:function(){command("dismissProgress")}
@@ -41,10 +45,6 @@
   </script>
 </head>
 <body>
-
-<!-- <H1>Share Market</H1>
- -->
-
 <div class="views">
     <div class="view view-main">
       <div class="pages">
@@ -55,9 +55,6 @@
       </div>
     </div>
 </div>
-	
-
-<!-- <div class="" id="content"></div>  -->
 
 </body>
 </html>
