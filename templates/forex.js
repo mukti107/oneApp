@@ -9,8 +9,8 @@ define({
 							<tr>
 								<th class="label-cell">Currency</th>
 								<th class="numeric-cell">Unit</th>
-								<th class="numeric-cell">Buying rate</th>
-								<th class="numeric-cell">Selling Rate</th>
+								<th class="numeric-cell">Buying</th>
+								<th class="numeric-cell">Selling</th>
 							</tr>
 						</thead>
 						{{#fixedRate}}
@@ -33,8 +33,8 @@ define({
 							<tr>
 								<th class="label-cell">Currency</th>
 								<th class="numeric-cell">Unit</th>
-								<th class="numeric-cell">Buying rate</th>
-								<th class="numeric-cell">Selling Rate</th>
+								<th class="numeric-cell">Buying</th>
+								<th class="numeric-cell">Selling</th>
 							</tr>
 						</thead>
 						{{#openMarketRate}}
