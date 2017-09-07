@@ -9,14 +9,14 @@
 	},
 	{
 		"name":"NEWS",
-		"link":"news.html"
+		"link":"news.html_newPage"
 	},
 	{
 		"name":"STOCK EXCHANGE",
-		"link":"nepse.html"
+		"link":"nepse.html_newPage"
 	},
 	{
 		"name":"FOREX",
-		"link":"forex.html"
+		"link":"forex.html_newPage"
 	}
 ]
