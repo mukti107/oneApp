@@ -41,6 +41,7 @@
 				data:{fb_token:token},
 				dataType:"json",
 				success:function(resp){
+					onReceiveUserToken(resp.access_token);
 					command("saveValues?access_token="+resp.access_token+"&refresh_token="+resp.refresh_token);
 				},
 				error:function(err){

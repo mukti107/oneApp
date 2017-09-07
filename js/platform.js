@@ -2,14 +2,13 @@ var platform="material";
 var apiBaseUrl="http://192.168.100.5:8000/api";
 var enableNavBar="YES";
 
-var pollfishConfig = {
-  api_key: "6e3a7717-dcc6-48c9-b750-06b52b414331",
-  debug: true,
-  ready:function(){
-  	// alert("ready");
-  	Pollfish.showIndicator();
-  }
-};
+// var pollfishConfig = {
+//   api_key: "6e3a7717-dcc6-48c9-b750-06b52b414331",
+//   debug: true,
+//   ready:function(){
+//   	//Pollfish.showIndicator();
+//   }
+// };
 
 //url parameters
 var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v})
