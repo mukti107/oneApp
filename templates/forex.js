@@ -9,14 +9,16 @@ define({
 							<tr>
 								<th class="label-cell">Currency</th>
 								<th class="numeric-cell">Unit</th>
-								<th class="numeric-cell">Rate</th>
+								<th class="numeric-cell">B.</th>
+								<th class="numeric-cell">S.</th>
 							</tr>
 						</thead>
 						{{#fixedRate}}
 							<tr>
 								<td class="label-cell">{{currency}}</td>
 								<td class="numeric-cell">{{unit}}</td>
-								<td class="numeric-cell">{{buyingRate}}(B)<br/>{{sellingRate}}(S)</td>
+								<td class="numeric-cell">{{buyingRate}}</td>
+								<td class="numeric-cell">{{sellingRate}}</td>
 							
 							</tr>
 						{{/fixedRate}}
@@ -31,14 +33,17 @@ define({
 							<tr>
 								<th class="label-cell">Currency</th>
 								<th class="numeric-cell">Unit</th>
-								<th class="numeric-cell">Rate</th>
+								<th class="numeric-cell">B.</th>
+								<th class="numeric-cell">S.</th>
 							</tr>
 						</thead>
 						{{#openMarketRate}}
 							<tr>
 								<td class="label-cell">{{currency}}</td>
 								<td class="numeric-cell">{{unit}}</td>
-								<td class="numeric-cell">{{buyingRate}}(B)<br/>{{sellingRate}}(S)</td>
+								<td class="numeric-cell">{{buyingRate}}</td>
+								<td class="numeric-cell">{{sellingRate}}</td>
+							
 							</tr>
 						{{/openMarketRate}}
 					</table>
