@@ -2,10 +2,19 @@
 
 .size-15 { font-size: 15px }
 
+.size-12 { font-size: 12px }
+
 .text-center{
 	text-align: center;
 }
 
-.text-bold{
+.text-bold, .text-title{
 	font-weight: bold;
+}
+.text-title{
+	color:rgba(0,0,0,.54);
+}
+
+.text-height-40{
+	line-height: 40px;
 }

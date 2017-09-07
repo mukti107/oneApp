@@ -130,7 +130,7 @@ function tableTOJSON($table,$keys){
 	  $cells = $(this).find("td");
 	  var thisRow = {};
 	  $cells.each(function(cellIndex) {
-	    thisRow[$keys[cellIndex]||$($headers[cellIndex]).html()] = $(this).text();
+	    thisRow[$keys[cellIndex]||$($headers[cellIndex]).html()] = $(this).text().trim();
 	  }); 
 	  if(Object.keys(thisRow).length>0)
 	  	myRows.push(thisRow);   
