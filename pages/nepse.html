@@ -30,8 +30,7 @@
 
           displayList({items:list},"#content","nepse");
           // $("h1").html(JSON.stringify()));
-        },
-        error:function(){command("dismissProgress");alert("error");},
+        }
         beforeSend:function(){command("showProgress")},
         complete:function(){command("dismissProgress")}
       });
