@@ -152,3 +152,13 @@ function tableTOJSON($table,$keys){
 $(document).ready(function(){initPage();});
 
 
+jQuery(function($) {
+    $('#content').on('scroll', function() {
+        if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+        	console.log("loadMore");
+            loadMore();
+        }
+    })
+});
+
+

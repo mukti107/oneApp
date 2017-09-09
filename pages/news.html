@@ -4,21 +4,40 @@
   	<title>News Feeds</title>
   	<script type="text/javascript" src="../js/platform.js"></script>
     <script type="text/javascript">
+    var loading=false;
+    var currentPage=0;
     
     function initPage(){
+      load(1);
+    }
+
+    function load(page){
+      if(loading)
+        return;
+      
       $.ajax({
           type:"GET",
-          url:"https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent("https://www.onlinekhabar.com/feed"),
+          url:"https://api.rss2json.com/v1/api.json",
+          data:{rss_url:"https://www.onlinekhabar.com/feed/atom?paged="+page,
+          api_key:"u3dj2rm8zzoq8no7ebxztpcgdklf1zp0b0jtc1n3"},
           dataType:"json",
-          
           success:function(response){
-              $.each(response.items,function(key,item){item.image=$(item.content).attr("src")});
-              renderTemplate(response,"#content","news_card");
+            currentPage=page;
+              console.log(response);
+              $.each(response.items,function(key,item){item.image=$("img","<div>"+item.content+"</div>").attr("src")});
+
+              $("<div id='news_for_page_"+page+"'></div>").appendTo("#content");
+
+              renderTemplate(response,"#news_for_page_"+page,"news_card");
           },
           error:function(){renderTemplate({},"#content","no_connection")},
-          beforeSend:function(){command("showProgress")},
-          complete:function(){command("dismissProgress")}
+          beforeSend:function(){loading=true; command("showProgress")},
+          complete:function(){loading=false;command("dismissProgress");}
         });
+    }
+
+    function loadMore(){
+      load(currentPage+1);
     }
 
     </script>
