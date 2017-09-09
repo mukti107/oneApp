@@ -4,16 +4,7 @@
 	<title>FOREX</title>
 	<script type="text/javascript" src="../js/platform.js"></script>
   <script type="text/javascript">
-    $(document).ready(function(){
-
-// $.getJSON('http://anyorigin.com/go?url=http%3A//www.nepalstock.com/todaysprice/export&callback=?', function(data){
-//   $('#content').html(data.contents);
-// });
-
-
-
-// url:"http://allow-any-origin.appspot.com/http://www.nepalstock.com/todaysprice/export",
-
+    function initPage(){
       $.ajax({
         type:"GET",
         url:"http://anyorigin.com/go",
@@ -32,16 +23,12 @@
           console.log($fixed,$open);
 
           renderTemplate({fixedRate:$fixed,openMarketRate:$open},"#content","forex")
-
-
         },
+        error:function(){renderTemplate({},"#content","no_connection")},
         beforeSend:function(){command("showProgress")},
         complete:function(){command("dismissProgress")}
       });
-
-
-      
-    });
+    }
   </script>
 </head>
 <body>

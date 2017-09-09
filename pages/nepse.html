@@ -4,17 +4,9 @@
 	<title>STOCK</title>
 	<script type="text/javascript" src="../js/platform.js"></script>
   <script type="text/javascript">
-    $(document).ready(function(){
 
-// $.getJSON('http://anyorigin.com/go?url=http%3A//www.nepalstock.com/todaysprice/export&callback=?', function(data){
-//   $('#content').html(data.contents);
-// });
-
-
-
-// url:"http://allow-any-origin.appspot.com/http://www.nepalstock.com/todaysprice/export",
-
-      $.ajax({
+  function initPage(){
+    $.ajax({
         type:"GET",
         url:"http://anyorigin.com/go",
          data:{url:"http://www.nepalstock.com/todaysprice/export"},
@@ -31,13 +23,13 @@
           displayList({items:list},"#content","nepse");
           // $("h1").html(JSON.stringify()));
         },
+        error:function(){renderTemplate({},"#content","no_connection")},
         beforeSend:function(){command("showProgress")},
         complete:function(){command("dismissProgress")}
       });
+  }
 
-
-      
-    });
+    
   </script>
 </head>
 <body>

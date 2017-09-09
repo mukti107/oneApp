@@ -139,3 +139,6 @@ function tableTOJSON($table,$keys){
 }
 
 
+$(document).ready(function(){initPage();});
+
+

@@ -4,9 +4,9 @@
 	<title>News Feeds</title>
 	<script type="text/javascript" src="../js/platform.js"></script>
   <script type="text/javascript">
-    $(document).ready(function(){
-
-      $.ajax({
+  
+  function initPage(){
+    $.ajax({
         type:"GET",
         url:"https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent("https://www.onlinekhabar.com/feed"),
         dataType:"json",
@@ -14,13 +14,12 @@
         success:function(response){
             displayList(response,"#hotels","detailed");
         },
+        error:function(){renderTemplate({},"#content","no_connection")},
         beforeSend:function(){command("showProgress")},
         complete:function(){command("dismissProgress")}
       });
+  }
 
-
-      
-    });
   </script>
 </head>
 <body>
