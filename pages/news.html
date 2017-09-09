@@ -12,10 +12,8 @@
           dataType:"json",
           
           success:function(response){
-              $.map(response.items,function(item){item.image=$(item.content).attr("src"); return item;});
-              console.log(response.items);
-              displayList(response,"#hotels","news_card");
-              //renderTemplate({},"#content","no_connection");
+              $.each(response.items,function(key,item){item.image=$(item.content).attr("src")});
+              renderTemplate(response,"#content","news_card");
           },
           error:function(){renderTemplate({},"#content","no_connection")},
           beforeSend:function(){command("showProgress")},
