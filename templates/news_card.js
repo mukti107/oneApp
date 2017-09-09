@@ -11,7 +11,7 @@ define({
 					  </div>
 					  <div class="card-footer">
 					  <a href="{{link}}" class="link"></a>
-					    <a href="{{link}}" class="link">Read more</a>
+					    <a href="{{link}}_newPage" class="link">Read more</a>
 					  </div>
 					</div>
 				{{/items}}
