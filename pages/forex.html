@@ -14,13 +14,13 @@
 
           $page=$(response.contents);
 
-          $fixed= tableTOJSON( $("table",$page)[4].outerHTML,['currency',"unit","buyingRate","sellingRate"] ) ;
+
+          $fixed= tableTOJSON( $("table",$page)[4].outerHTML,['currency',"unit","buyingRate","sellingRate"] ) ;//tableTOJSON( $("table:contains(Dollar)",$page),['currency',"unit","buyingRate","sellingRate"] ) ;
           $fixed.splice(0,2)
 
           $open= tableTOJSON( $("table",$page)[5].outerHTML,['currency',"unit","buyingRate","sellingRate"] ) ;
           $open.splice(0,2)
 
-          console.log($fixed,$open);
 
           renderTemplate({fixedRate:$fixed,openMarketRate:$open},"#content","forex")
         },

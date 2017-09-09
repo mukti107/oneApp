@@ -9,7 +9,7 @@ OneApp.getValue=function(options){
 
 
 var platform="material";
-var apiBaseUrl="http://192.168.100.5:8000/api";
+var apiBaseUrl="http://oneapp.ezzar.com/api";
 var enableNavBar="YES";
 
 // var pollfishConfig = {
@@ -149,16 +149,22 @@ function tableTOJSON($table,$keys){
 }
 
 
-$(document).ready(function(){initPage();});
+$(document).ready(function(){
 
+	initPage();
 
-jQuery(function($) {
-    $('#content').on('scroll', function() {
-        if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-        	console.log("loadMore");
-            loadMore();
-        }
-    })
+	if(typeof loadMore !="undefined"){
+		$('#content').on('scroll', function() {
+	        if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+	        	console.log(typeof loadMore);
+	            loadMore();
+	        }
+	    })
+	}
+
 });
+
+
+
 
 

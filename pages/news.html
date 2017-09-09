@@ -23,11 +23,8 @@
           dataType:"json",
           success:function(response){
             currentPage=page;
-              console.log(response);
               $.each(response.items,function(key,item){item.image=$("img","<div>"+item.content+"</div>").attr("src")});
-
               $("<div id='news_for_page_"+page+"'></div>").appendTo("#content");
-
               renderTemplate(response,"#news_for_page_"+page,"news_card");
           },
           error:function(){renderTemplate({},"#content","no_connection")},
