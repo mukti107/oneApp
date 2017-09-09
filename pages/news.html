@@ -12,7 +12,9 @@
           dataType:"json",
           
           success:function(response){
-              displayList(response,"#hotels","detailed");
+              $.map(response.items,function(item){item.image=$(item.content).attr("src"); return item;});
+              console.log(response.items);
+              displayList(response,"#hotels","news_card");
               //renderTemplate({},"#content","no_connection");
           },
           error:function(){renderTemplate({},"#content","no_connection")},

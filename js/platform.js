@@ -1,3 +1,13 @@
+var OneApp={callbacks:{}};
+
+OneApp.getValue=function(options){
+	var tempFnName= "oneApp"+Math.floor(Math.random()*10000000);
+	console.log(tempFnName);
+	OneApp.callbacks[tempFnName]=options.callback;
+	command("getValues?callback="+tempFnName);
+}
+
+
 var platform="material";
 var apiBaseUrl="http://192.168.100.5:8000/api";
 var enableNavBar="YES";
