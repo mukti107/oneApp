@@ -12,8 +12,8 @@
           dataType:"json",
           
           success:function(response){
-              //displayList(response,"#hotels","detailed");
-              renderTemplate({},"#content","no_connection");
+              displayList(response,"#hotels","detailed");
+              // renderTemplate({},"#content","no_connection");
           },
           error:function(){renderTemplate({},"#content","no_connection")},
           beforeSend:function(){command("showProgress")},
