@@ -1,47 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>News Feeds</title>
-	<script type="text/javascript" src="../js/platform.js"></script>
-  <script type="text/javascript">
-  
-  function initPage(){
-    $.ajax({
-        type:"GET",
-        url:"https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent("https://www.onlinekhabar.com/feed"),
-        dataType:"json",
-        
-        success:function(response){
-            displayList(response,"#hotels","detailed");
-            // renderTemplate({},"#content","no_connection");
-        },
-        error:function(){renderTemplate({},"#content","no_connection")},
-        beforeSend:function(){command("showProgress")},
-        complete:function(){command("dismissProgress")}
-      });
-  }
+  <head>
+  	<title>News Feeds</title>
+  	<script type="text/javascript" src="../js/platform.js"></script>
+    <script type="text/javascript">
+    
+    function initPage(){
+      $.ajax({
+          type:"GET",
+          url:"https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent("https://www.onlinekhabar.com/feed"),
+          dataType:"json",
+          
+          success:function(response){
+              //displayList(response,"#hotels","detailed");
+              renderTemplate({},"#content","no_connection");
+          },
+          error:function(){renderTemplate({},"#content","no_connection")},
+          beforeSend:function(){command("showProgress")},
+          complete:function(){command("dismissProgress")}
+        });
+    }
 
-  </script>
-</head>
-<body>
-
-<div class="views">
-    <div class="view view-main">
-      <div class="pages">
-        <div class="page" data-page="home">
-          <div id="content" class="page-content">
-            <div class="list-block media-list" id="hotels">
+    </script>
+  </head>
+  <body>
+    <div class="views">
+        <div class="view view-main">
+          <div class="pages">
+            <div class="page" data-page="home">
+              <div id="content" class="page-content">
+                <div class="list-block media-list" id="hotels">
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-</div>
-
-	
-
-
-
-</div>   
-
-</body>
+    </div>   
+  </body>
 </html>
