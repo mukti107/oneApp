@@ -1,5 +1,5 @@
 define({
-	template:`<ul>
+	template:`
 				{{#items}}
 					<div class="card demo-card-header-pic">
 					  <div style="background-image:url({{image}})" valign="bottom" class="card-header color-white no-border">{{title}}</div>
@@ -15,7 +15,6 @@ define({
 					  </div>
 					</div>
 				{{/items}}
-			</ul>
 			`
 })
 
