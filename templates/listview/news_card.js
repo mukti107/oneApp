@@ -5,7 +5,7 @@ define({
 					  <div style="background-image:url({{image}})" valign="bottom" class="card-header color-white no-border">{{title}}</div>
 					  <div class="card-content">
 					    <div class="card-content-inner">
-					      <p class="color-gray">Posted on {{pubDate}}</p>
+					      <p class="color-gray">{{categories}} | {{author}}</p>
 					      <p>{{description}}</p>
 					    </div>
 					  </div>
