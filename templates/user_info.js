@@ -1,8 +1,8 @@
 define({
 	template:`
 				{{#logged}}
-				<a href="profile.html_newPage">
-					<div  style="line-height:32px;vertical-align: middle;float:left; margin-right:5px;">{{name}}
+				<a href="profile.html_newPage" >
+					<div  style="line-height:32px;vertical-align: middle;float:left; margin-right:5px;color:#fff;">{{name}}
 					</div>
 					<img style="border-radius:16px;" src="{{picture}}" width="32" />
 				{{/logged}}
