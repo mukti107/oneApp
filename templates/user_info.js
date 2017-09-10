@@ -1,7 +1,9 @@
 define({
 	template:`
-				<img src="{{picture}}" width="40" />
-				Hello, {{name}}
+				<span style="line-height:40px;vertical-align: middle;">{{name}}
+				</span>
+				<img style="border-radius:1000px;" src="{{picture}}" width="20" />
+				
 			`
 })
 
