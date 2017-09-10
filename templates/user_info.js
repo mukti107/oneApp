@@ -1,7 +1,7 @@
 define({
 	template:`
 				{{#logged}}
-				<a href="profile.html_newPage">
+				<a class="button" href="profile.html_newPage">
 					<div  style="line-height:32px;vertical-align: middle;float:left; margin-right:5px;">{{name}}
 					</div>
 					<img style="border-radius:16px;" src="{{picture}}" width="32" />
