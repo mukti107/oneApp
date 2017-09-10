@@ -1,22 +1,22 @@
 [
 	{
-		"name":"HOME",
-		"link":"index.html"
-	},
-	{
 		"name":"SCAN RECHARGE CARD",
-		"link":"oneapp://rechargeCardScanner"
+		"link":"oneapp://rechargeCardScanner",
+		"icon":"card"
 	},
 	{
 		"name":"NEWS",
-		"link":"news.html_newPage"
+		"link":"news.html_newPage",
+		"icon":"social_rss"
 	},
 	{
 		"name":"STOCK EXCHANGE",
-		"link":"nepse.html_newPage"
+		"link":"nepse.html_newPage",
+		"icon":"graph_square"
 	},
 	{
 		"name":"FOREX",
-		"link":"forex.html_newPage"
+		"link":"forex.html_newPage",
+		"icon":"money_dollar"
 	}
 ]
