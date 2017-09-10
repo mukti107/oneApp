@@ -7,7 +7,7 @@ define({
 					<img style="border-radius:16px;" src="{{picture}}" width="32" />
 				{{/logged}}
 				{{^logged}}	
-           	   		<a href="oneapp://facebookLogin"><i class="icon f7-icons">social_facebook_fill</i></a>
+           	   		<a href="oneapp://facebookLogin">Login with facebook</a>
 				{{/logged}}
 				
 			`
