@@ -1,5 +1,6 @@
 define({
 	template:`
+				<img src="{{picture}}" width="40" />
 				Hello, {{name}}
 			`
 })

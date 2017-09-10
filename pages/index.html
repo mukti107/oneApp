@@ -9,19 +9,21 @@
 
 	function initPage(){
 		getUserToken();
+		// onReceiveUserToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ1OTg5YTU5MDE5YjU4Mjk3OGFlMTIzMjljZWUzM2Q4OGVlNGM5OWY0ZDcyZGVhMGM2ZmMxOGQwNWFkZTBmOWNlNGIwZDg0MjI5NGExN2M2In0.eyJhdWQiOiIyIiwianRpIjoiZDU5ODlhNTkwMTliNTgyOTc4YWUxMjMyOWNlZTMzZDg4ZWU0Yzk5ZjRkNzJkZWEwYzZmYzE4ZDA1YWRlMGY5Y2U0YjBkODQyMjk0YTE3YzYiLCJpYXQiOjE1MDUwMzYwMzAsIm5iZiI6MTUwNTAzNjAzMCwiZXhwIjoxNTM2NTcyMDMwLCJzdWIiOiI1Iiwic2NvcGVzIjpbXX0.b2P0Z6N1O0_4UAPTGx4JezC1F-3AjvcJBn8gLzwY0FZR9wBL9ZgMOxxd4pIIY9yARoJePLIXnbJIqwjFaWmEteSKTAV4vrbREm2tUVmYw_BlgxMknFktvpK80MVrlkw7RCDVuD3fZ5rD7mQzYo8ZRv2o98H4m0-hzN_eHU-8XbUIQFxwTn0r1P4yeOlFeLEzsD9yGBuPQ4vAptmuM3wRN0Bwcjy3DmX87840YbYfiaKjYpUdSQHF8ZSBqSPFL2yoF4GXOnLfxZOg6btNYIxtjx3iAgT15Wr-LNNox1CQR8OfFqZBjAczFnu4eatZgigchjF6ZfhLGGzIVjHGv1ED5za185VJpK-IJe9rGRe7Pw8Cdmd5O9AS0fDgdods2Jr6_qpYByn1tfIvZ_hWbdoikBzZUOWrozdLoyqbfOQmRwnuXfzE-7EWZyyRT14dQLhj89xI8U9D-gRzPzgq-gQ74RYuO0lqhoo7df1X0aftwH49eNgR8J83aUrWDUs-TKTvu_-thVS3MhjREQi0BaOGEonh5sK3UXZNmnGom71Cg5B2HZNfirYyY0cASizkCwuzTdFCzm1zZbZRp1OG2efMhrm6nTL_MwR3yHXFQpwpVEjSPaot7z6lWa12LsgWt0gmcknIjt2z0rwnzeN7MidDKHxVXHxmVKlyMd1gtoXE1R");
 	}
 
 
 	function onReceiveUserToken(token){
 		if(token.length){
 			$.ajax({
-				url:apiBaseUrl+"/user",
+				url:apiBaseUrl+"/me",
 				dataType:"json",
 				success:function(response){
 					renderTemplate(response,"#user_info","user_info")
 				},
 				error:function(err,stat,resp){
-					renderTemplate({name:"Guest"},"#user_info","user_info")
+					//renderTemplate({name:"Guest"},"#user_info","user_info")
+					console.log(err);
 				},
 				beforeSend: function (xhr) {
 			        xhr.setRequestHeader('Authorization', "Bearer "+token);
@@ -51,14 +53,33 @@
 
 	</script>
 </head>
-<body>
-	<h1 id="user_info"></h1>
+<body class="">
 
-	<div>
-		<a href="oneapp://toggleMenu"><i class="icon f7-icons">bars</i></a>
-		<a href="oneapp://facebookLogin">Login With Facebook</a><br/>
-		<a href="oneapp://rechargeCardScanner">Scanner</a>
-	</div>
+	<!-- <h1 id="user_info"></h1> -->
+
+	<div class="views">
+        <div class="view view-main">
+          <div class="pages">
+            <div class="page" data-page="home">
+              <div id="content" class="page-content landing_page_bg">
+              <div class="row landing_page_title_bar">
+              	<a href="oneapp://toggleMenu"><img src="/icons/menu.png" class="menu_icon" /></a>
+
+              	<div id="user_info">
+              		<a href="oneapp://facebookLogin"><i class="icon f7-icons">social_facebook_fill</i></a>
+              	</div>
+              	
+              </div>
+              <br/>
+              		
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+	
 
 </body>
 </html>

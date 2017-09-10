@@ -9,6 +9,7 @@ OneApp.getValue=function(options){
 
 
 var platform="material";
+// var apiBaseUrl="http://localhost:8000/api";
 var apiBaseUrl="http://oneapp.ezzar.com/api";
 var enableNavBar="YES";
 
