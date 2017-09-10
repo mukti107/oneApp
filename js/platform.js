@@ -39,7 +39,8 @@ var styles= [
 				"vendor/framework7/css/"+platform+"/colors.min.css",
 				"vendor/framework7/css/"+platform+"/min.css",
 				"vendor/framework7/css/icons.css",
-				"vendor/framework7/css/style.css",
+				"css/style.css",
+				"css/"+platform+".css",
 				];
 
 //vendor scripts

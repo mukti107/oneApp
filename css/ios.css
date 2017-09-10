@@ -1,0 +1,53 @@
+
+.landing_page_bg{
+	padding:0 5px 0 5px ;
+	background: #f0f9ff; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover, #f0f9ff 0%, #92e868 100%); /* FF3.6-15 */
+	background: -webkit-radial-gradient(center, ellipse cover, #f0f9ff 0%,#92e868 100%); /* Chrome10-25,Safari5.1-6 */
+	background: radial-gradient(ellipse at center, #f0f9ff 0%,#92e868 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#92e868',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.landing_page_title_bar{
+	margin-top: 16px;
+}
+
+.menu_icon{
+	max-width: 32px;
+}
+
+.absolute-center{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+}
+
+.size-15 { font-size: 15px }
+
+.size-12 { font-size: 12px }
+
+.text-center{
+	text-align: center;
+}
+
+.text-bold, .text-title{
+	font-weight: bold;
+}
+.text-title{
+	color:rgba(0,0,0,.54);
+}
+
+.text-height-40{
+	line-height: 40px;
+}
+
+
+
+.demo-card-header-pic .card-header {
+    height: 40vw;
+    background-size: cover;
+    background-position: center;
+  }
+
+
