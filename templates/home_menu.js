@@ -2,11 +2,13 @@ define({
 	template:`
 				<div class="row">
 				    {{#items}}
-						<div class="col-33 home_menu_item text-center" style="">
+						<div class=" col-33 home_menu_item text-center" style="position:relative;">
+							<div class="absolute-center">
 							<a href="{{link}}" style="padding:15px 0 15px 0;color:#fff;">
 								<i class="icon f7-icons">{{icon}}</i><br/>
 								{{name}}
 							</a>
+							</div>
 						</div>
 					{{/items}}
 				</div> 
