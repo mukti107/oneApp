@@ -19,10 +19,11 @@
 .home_menu_item{
 	float: left;
 	width:100%;
-	padding: 15vw 0 0 0;
-	height: 20vw;
+	height: 25vw;
 	vertical-align: middle;
 	text-align: center;
+	margin-bottom: 15px;
+	background:rgba(0,0,0,0.25);
 }
 
 .absolute-center{
