@@ -19,6 +19,7 @@
 				url:apiBaseUrl+"/me",
 				dataType:"json",
 				success:function(response){
+					response.logged=true;
 					renderTemplate(response,"#user_info","user_info")
 				},
 				error:function(err,stat,resp){
@@ -29,6 +30,8 @@
 			        xhr.setRequestHeader('Authorization', "Bearer "+token);
 			    }
 			});
+		}else{
+			renderTemplate({logged:false},"#user_info","user_info")
 		}
 	}
 
@@ -44,7 +47,8 @@
 				command("saveValues?access_token="+resp.access_token+"&refresh_token="+resp.refresh_token);
 			},
 			error:function(err){
-				alert("Error logging in");
+				//if(err.rea)
+				//alert("Error logging in");
 			},
 			beforeSend:function(){command("showProgress");},
 	        complete:function(xhr){command("dismissProgress");}
@@ -66,7 +70,6 @@
               	<a href="oneapp://toggleMenu"><img src="/icons/menu.png" class="menu_icon" /></a>
 
               	<div id="user_info" style="margin-top:5px">
-              		<a href="oneapp://facebookLogin"><i class="icon f7-icons">social_facebook_fill</i></a>
               	</div>
               	
               </div>
