@@ -37,6 +37,8 @@
 				},
 				error:function(err,stat,resp){
 					//renderTemplate({name:"Guest"},"#user_info","user_info")
+					if(err.status==401)
+						renderTemplate({logged:false},"#user_info","user_info")
 					console.log(err);
 				},
 				beforeSend: function (xhr) {
