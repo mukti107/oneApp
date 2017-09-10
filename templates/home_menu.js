@@ -3,7 +3,7 @@ define({
 				<div class="row">
 				    {{#items}}
 
-						<div class="col-25 home-menu_item text-center">
+						<div class="col-50 home-menu_item text-center">
 							<a href="{{link}}">
 								<div class="home_menu_item card">
 									<i class="icon f7-icons">{{icon}}</i><br/>
