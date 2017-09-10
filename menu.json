@@ -2,21 +2,25 @@
 	{
 		"name":"SCAN RECHARGE CARD",
 		"link":"oneapp://rechargeCardScanner",
-		"icon":"card"
+		"icon":"card",
+		"bgColor":"#aa0000"
 	},
 	{
 		"name":"NEWS",
 		"link":"news.html_newPage",
-		"icon":"social_rss"
+		"icon":"social_rss",
+		"bgColor":"#00aaff"
 	},
 	{
 		"name":"STOCK EXCHANGE",
 		"link":"nepse.html_newPage",
-		"icon":"graph_square"
+		"icon":"graph_square",
+		"bgColor":"#ffaa00"
 	},
 	{
 		"name":"FOREX",
 		"link":"forex.html_newPage",
-		"icon":"money_dollar"
+		"icon":"money_dollar",
+		"bgColor":"#996699"
 	}
 ]
