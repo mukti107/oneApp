@@ -23,9 +23,15 @@
         alert("info");
       }
 
-      function copy(){
-        alert("copy");
+      function copy() {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($("#unicode").val()).select();
+        document.execCommand("copy");
+        $temp.remove();
       }
+
+
 
     </script>
     <style type="text/css">
