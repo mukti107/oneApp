@@ -10,41 +10,41 @@
 		"link":"oneapp://rechargeCardScanner",
 		"icon":"card",
 		"bgColor":"#aa0000",
-		"showInHome":true
+		"showInHome":"true"
 	},
 	{
 		"name":"NEWS",
 		"link":"news.html_newPage",
 		"icon":"social_rss",
 		"bgColor":"#00aaff",
-		"showInHome":true
+		"showInHome":"true"
 	},
 	{
 		"name":"STOCK EXCHANGE",
 		"link":"nepse.html_newPage",
 		"icon":"graph_square",
 		"bgColor":"#ffaa00",
-		"showInHome":true
+		"showInHome":"true"
 	},
 	{
 		"name":"FOREX",
 		"link":"forex.html_newPage",
 		"icon":"money_dollar",
 		"bgColor":"#ffaa00",
-		"showInHome":true
+		"showInHome":"true"
 	},
 	{
 		"name":"NEPALI UNICODE",
 		"link":"unicode.html_newPage",
 		"icon":"document_text",
 		"bgColor":"#aa0000",
-		"showInHome":true
+		"showInHome":"true"
 	},
 	{
 		"name":"SELL USED ITEM",
 		"link":"unicode.html_newPage",
 		"icon":"list",
 		"bgColor":"#00aaff",
-		"showInHome":true
+		"showInHome":"true"
 	}
 ]
