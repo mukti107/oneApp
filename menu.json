@@ -41,10 +41,17 @@
 		"showInHome":"true"
 	},
 	{
+		"name":"DATE CONVERTER",
+		"link":"date_converter.html_newPage",
+		"icon":"calendar",
+		"bgColor":"#aa0000",
+		"showInHome":"true"
+	},
+	{
 		"name":"SELL USED ITEM",
 		"link":"unicode.html_newPage",
 		"icon":"list",
 		"bgColor":"#00aaff",
-		"showInHome":"true"
+		"showInHome":"false"
 	}
 ]

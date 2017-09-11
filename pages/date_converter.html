@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Date Converter</title>
+  	<script type="text/javascript" src="../js/platform.js"></script>
+  	<script type="text/javascript" src="../js/dateConverter.js"></script>
+    <script type="text/javascript">
+    
+    	function initPage(){
+    		$("#date_ad").on("change, keyup",function(){
+    			var ad_date=$(this).val().split("-");
+    			if(ad_date.length<3)
+    				return;
+    			
+    			console.log(ad_date);
+    			var bs_date=eng_to_nep(+ad_date[0],+ad_date[1],+ad_date[2]);
+    			console.log(bs_date);
+    			if(bs_date)
+    				$("#date_bs").val(bs_date.year+"-"+bs_date.month+"-"+bs_date.date);
+    		});
+
+    		$("#date_bs").on("change, keyup",function(){
+    			var bs_date=$(this).val().split("-");
+    			if(bs_date.length<3)
+    				return;
+
+    			console.log(ad_date);
+    			var ad_date=nep_to_eng(+bs_date[0],+bs_date[1],+bs_date[2]);
+    			console.log(ad_date);
+    			if(ad_date)
+    				$("#date_ad").val(ad_date.year+"-"+ad_date.month+"-"+ad_date.date);
+    		});
+    	}
+    </script>
+  </head>
+  <body>
+  <!--
+    <div class="views">
+        <div class="view view-main">
+          <div class="pages">
+            <div class="page" data-page="home">
+               <div id="content" class="page-content">
+              	<div class="card absolute-center" style="width: 90vw">
+				  <div class="card-content">
+				    <div class="list-block inset">
+					  <ul>
+					    <li>
+					      <div class="item-content">
+					        <div class="item-media"><i class="icon f7-icons">calendar</i></div>
+					        <div class="item-inner">
+					          <div class="item-input">
+					            <input type="text" id="date_ad" placeholder="Date in AD">
+					          </div>
+					        </div>
+					      </div>
+					    </li>
+					    <li>
+					      <div class="item-content">
+					        <div class="item-inner">
+					          <div class="item-input">
+					            <input id="date_bs" type="text" placeholder="Date in BS">
+					          </div>
+					        </div>
+					      </div>
+					    </li>
+				      </ul>
+				    </div>
+				  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+<div class="list-block inset absolute-center" style="width: 90vw">
+  <ul>
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-input">
+		        <input type="text" id="date_ad" placeholder="Date in AD">
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-input">
+            <input id="date_bs" type="text" placeholder="Date in BS">
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>              
+
+  </body>
+</html>
+	
