@@ -25,11 +25,7 @@
       }
 
       function copy() {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($("#unicode").val()).select();
-        document.execCommand("copy");
-        $temp.remove();
+        command("copyToClopboard?value="+encodeURIComponent($("#unicode").val()))
       }
 
 
