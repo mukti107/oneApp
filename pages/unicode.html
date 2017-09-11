@@ -10,6 +10,11 @@
         $("#roman").on("keyup",function(){
           translate($("#roman")[0],$("#unicode")[0],false,true)
         });
+
+        if(platform=="ios"){
+            $("textarea").addClass("ios");
+        }
+
       }
     </script>
     <style type="text/css">
@@ -25,21 +30,33 @@
       #unicode{
         text-size:20px;
         width:100%;
-        height:60vh;
+        top:0;
+        bottom:40vh;
         
       }
       #roman{
-        width:100%;
+          width:100%;
           top: 60vh;
           bottom: 0;
           border-top: 1px solid #999;
+      }
+
+      #roman:focus.ios{
+        top:calc(60vh + 108px);
+      }
+
+      #roman:focus.ios + #unicode.ios{
+        top: 216px;
+        bottom:calc(40vh - 108px);
+        
       }
     </style>
 </head>
 <body>
 <!-- <div class="page-content"> -->
-      <textarea id="unicode" placeholder="Nepali Unicode will appear here" ></textarea>
+      
       <textarea id="roman" placeholder="Type here in roman"></textarea>
+      <textarea id="unicode" placeholder="Nepali Unicode will appear here" ></textarea>
 <!-- </div> -->
 </body>
 </html>
