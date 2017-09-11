@@ -25,7 +25,8 @@
       }
 
       function copy() {
-        command("copyToClopboard?value="+encodeURIComponent($("#unicode").val()))
+        command("copyToClopboard?value="+encodeURIComponent($("#unicode").val()));
+        command("alert?message="+encodeURIComponent("Text copied to clipboard"));
       }
 
 
