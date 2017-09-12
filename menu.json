@@ -49,7 +49,7 @@
 	},
 	{
 		"name":"SELL USED ITEM",
-		"link":"unicode.html_newPage",
+		"link":"sell_property.html_newPage",
 		"icon":"list",
 		"bgColor":"#00aaff",
 		"showInHome":"false"
