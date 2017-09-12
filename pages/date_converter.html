@@ -6,36 +6,67 @@
   	<script type="text/javascript" src="../js/platform.js"></script>
   	<script type="text/javascript" src="../js/dateConverter.js"></script>
     <script type="text/javascript">
-    
+    var nepali_numbers="०१२३४५६७८९";
+
+    function num_to_nepali($num){
+      var num=""+$num;
+      var $npNum="";
+      for(i=0;i<num.length;i++){
+        $npNum+=nepali_numbers[+num[i]]
+      }
+      return $npNum;
+    }
+
     	function initPage(){
-    		renderTemplate({},"#content","date_converter",initCallbacks)
+    		renderTemplate({},"#converter","date_converter",initCallbacks)
     	}
     	function initCallbacks(){
-
-    		$("#date_ad").on("change, keyup",function(){
+    		$("#date_ad").on("keyup",function(){
     			var ad_date=$(this).val().split("-");
-    			if(ad_date.length<3)
-    				return;
-    			
-    			console.log(ad_date);
-    			var bs_date=eng_to_nep(+ad_date[0],+ad_date[1],+ad_date[2]);
-    			console.log(bs_date);
-    			if(bs_date)
-    				$("#date_bs").val(bs_date.year+"-"+bs_date.month+"-"+bs_date.date);
+    			if(ad_date.length==3 && ad_date[2].length){
+      			var bs_date=eng_to_nep(+ad_date[0],+ad_date[1],+ad_date[2]);
+      			console.log(bs_date);
+      			if(bs_date){
+      				$("#date_bs").val(bs_date.year+"-"+bs_date.month+"-"+bs_date.date);
+              showDayDetails([
+                getNepaliDateInfo(bs_date),
+                getEnglishDateInfo({year:+ad_date[0],month:+ad_date[1],date:+ad_date[2],num_day:bs_date.num_day})
+                ]);
+            }
+        }
+
     		});
 
-    		$("#date_bs").on("change, keyup",function(){
-    			var bs_date=$(this).val().split("-");
-    			if(bs_date.length<3)
-    				return;
+        function getNepaliDateInfo(date){
+            return {dayName:get_day_of_week_nep(date.num_day),date:num_to_nepali(date.date),monthName:get_nepali_month(date.month),year:num_to_nepali(date.year)};
+        }
 
-    			console.log(ad_date);
-    			var ad_date=nep_to_eng(+bs_date[0],+bs_date[1],+bs_date[2]);
-    			console.log(ad_date);
-    			if(ad_date)
-    				$("#date_ad").val(ad_date.year+"-"+ad_date.month+"-"+ad_date.date);
+        function getEnglishDateInfo(date){
+            return {dayName:get_day_of_week_eng(date.num_day),date:date.date,monthName:get_english_month(date.month),year:date.year};
+        }
+
+
+
+    		$("#date_bs").on("keyup",function(){
+      			var bs_date=$(this).val().split("-");
+      			if(bs_date.length==3 && bs_date[2].length){
+        			var ad_date=nep_to_eng(+bs_date[0],+bs_date[1],+bs_date[2]);
+        			console.log(ad_date);
+        			if(ad_date){
+        				$("#date_ad").val(ad_date.year+"-"+ad_date.month+"-"+ad_date.date);
+                showDayDetails([
+                  getNepaliDateInfo({year:+bs_date[0],month:+bs_date[1],date:+bs_date[2],num_day:ad_date.num_day}),
+                  getEnglishDateInfo(ad_date)
+                  ]);
+              }
+          }
     		});
     	}
+
+      function showDayDetails($details){
+        renderTemplate({date:$details},"#date_details","date_details")
+      }
+
     </script>
   </head>
   <body>
@@ -45,6 +76,10 @@
           <div class="pages">
             <div class="page" data-page="home">
                <div id="content" class="page-content">
+                <div id="converter">
+                </div>
+                <div id="date_details">
+                </div>
               	             
             </div>
           </div>

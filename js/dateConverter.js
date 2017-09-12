@@ -132,51 +132,51 @@
 			
 			switch($m){
 				case 1:
-					$n_month = "Baishak";
+					$n_month = "वैशाख";
 					break;
 					
 				case 2:
-					$n_month = "Jestha";
+					$n_month = "जेठ";
 					break;
 					
 				case 3:
-					$n_month = "Ashad";
+					$n_month = "आषाढ़";
 					break;
 					
 				case 4:
-					$n_month = "Shrawn";
+					$n_month = "श्रावण";
 					break;
 					
 				case 5:
-					$n_month = "Bhadra";
+					$n_month = "भाद्र";
 					break;
 				
 				case 6:
-					$n_month = "Ashwin";
+					$n_month = "असोज";
 					break;
 				
 				case 7:
-					$n_month = "kartik";
+					$n_month = " कार्तिक	";
 					break;
 				
 				case 8:
-					$n_month = "Mangshir";
+					$n_month = "मार्गशीर्ष";
 					break;
 				
 				case 9:
-					$n_month = "Poush";
+					$n_month = "पौष";
 					break;
 				
 				case 10:
-					$n_month = "Magh";
+					$n_month = "माघ";
 					break;
 				
 				case 11:
-					$n_month = "Falgun";
+					$n_month = "फाल्गुन";
 					break;
 				
 				case 12:
-					$n_month = "Chaitra";
+					$n_month = "चैत्र";
 					break;
 			}	
 			return  $n_month;
@@ -224,39 +224,13 @@
 			return $eMonth;	
 		}
 	
-		 function get_day_of_week($day){		
-			switch($day){
-				case 1:
-					$day = "Sunday";
-					break;
-					
-				case 2:
-					$day = "Monday";
-					break;
-					
-				case 3:
-					$day = "Tuesday";
-					break;
-				
-				case 4:
-					$day = "Wednesday";
-					break;
-				
-				case 5:
-					$day = "Thursday";
-					break;
-				
-				case 6:
-					$day = "Friday";
-					break;
-				
-				case 7:
-					$day = "Saturday";
-					break;
-			}
-			return $day;
+		 function get_day_of_week_eng($day){
+		 return["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][+$day-1];		
 		}
-	
+
+		function get_day_of_week_nep($day){		
+			return["आइतवार","सोमवार","मङ्गलवार","बुधवार","बिहिवार","शुक्रवार","शनिवार"][+$day-1];
+		}
 	
 		 function is_range_eng($yy, $mm, $dd){
 			if($yy<1944 || $yy>2033){
@@ -376,7 +350,7 @@
 				nep_date["year"] = $y;
 				nep_date["month"] = $m;
 				nep_date["date"] = $total_nDays;
-				nep_date["day"] = get_day_of_week($day);
+				nep_date["day"] = get_day_of_week_nep($day);
 				nep_date["nmonth"] = get_nepali_month($m);
 				nep_date["num_day"] = $numDay;
 				
@@ -458,7 +432,7 @@
 				eng_date["year"] = $y;					
 				eng_date["month"] = $m;					
 				eng_date["date"] = $total_eDays;		
-				eng_date["day"] = get_day_of_week($day);					
+				eng_date["day"] = get_day_of_week_eng($day);					
 				eng_date["emonth"] = get_english_month($m);  			
 				eng_date["num_day"] = $numDay;			
 				
