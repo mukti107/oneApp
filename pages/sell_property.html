@@ -14,6 +14,7 @@
 
       function selectImage(){
         	var file=$("<input type='file' accept='image/*' />");
+        	$("body").append(file);
         	
         	file.on("change",function(){
         		readURL(this);
