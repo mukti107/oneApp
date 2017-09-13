@@ -6,32 +6,25 @@
     <script type="text/javascript">
       function initPage(){
         
-        $("input").on("change",function(){
-        		readURL(this);
-        		alert("change");
-        	});
+        
       }
 
       function selectImage(){
-        	var file=$("<input type='file' accept='image/*' />");
+        	var file=$("<input type='file' style='display:none;' accept='image/*' />");
         	$("body").append(file);
         	
         	file.on("change",function(){
         		readURL(this);
-        		alert("change");
         	});
         	setTimeout(function(){file.click();},200);
         }
 
         function readURL(input) {
-        	alert(JSON.stringify(input));
 		    if (input.files && input.files[0]) {
 		        var reader = new FileReader();
-
 		        reader.onload = function (e) {
 		            $('body').append($('<img style="max-width:100px;max-height:100px;" src="'+e.target.result+'" />') );
 		        }
-
 		        reader.readAsDataURL(input.files[0]);
 		    }
 		}
@@ -41,6 +34,5 @@
 <body>
       <img id="blah">
       <a href="javascript:selectImage()">Add Image</a>
-      <input change="readURL(this)" type='file' accept='image/*' single />
 </body>
 </html>
