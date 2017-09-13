@@ -6,16 +6,20 @@
     <script type="text/javascript">
       function initPage(){
         
-        
+        $("input").on("change",function(){
+        		readURL(this);
+        		alert("change");
+        	});
       }
 
       function selectImage(){
         	var file=$("<input type='file' accept='image/*' />");
-        	file.click();
+        	
         	file.on("change",function(){
         		readURL(this);
         		alert("change");
         	});
+        	file.click();
         }
 
         function readURL(input) {
@@ -36,6 +40,6 @@
 <body>
       <img id="blah">
       <a href="javascript:selectImage()">Add Image</a>
-      <input type='file' accept='image/*' single />
+      <input change="readURL(this)" type='file' accept='image/*' single />
 </body>
 </html>
