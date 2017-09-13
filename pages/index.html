@@ -15,7 +15,6 @@
 	function loadMenu(){
 		$.ajax({url:"/menu.json",
 			success:function(menu){
-				console.log(menu);
 				var m = JSON.parse(menu);
 				renderTemplate({items:m},"#content","home_menu");
 			},error:function(e){
