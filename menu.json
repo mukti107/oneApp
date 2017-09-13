@@ -16,7 +16,7 @@
 		"name":"NEWS",
 		"link":"news.html_newPage",
 		"icon":"social_rss",
-		"bgColor":"#ffaa00",
+		"bgColor":"#00aaff",
 		"showInHome":"true"
 	},
 	{
@@ -46,5 +46,9 @@
 		"icon":"calendar",
 		"bgColor":"#aa0000",
 		"showInHome":"true"
+	},{
+		"name":"SELL USED ITEM",
+		"link":"sell_property.html_newPage",
+		"icon":"list",
 	}
 ]
