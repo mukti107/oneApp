@@ -4,11 +4,7 @@
 }
 
 .menu_icon{
-	/*border-radius: 0 16px 16px 0 ; */
 	max-width: 32px;
-	background:  #000;
-	mask: #f00;
-	-webkit-mask-box-image: url(../icons/menu.png);
 }
 
 .home_menu_item{
