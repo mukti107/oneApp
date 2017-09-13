@@ -10,7 +10,7 @@
       }
 
       function selectImage(){
-        	var file=$("<input type='file' />");
+        	var file=$("<input type='file' accept='image/*' />");
         	file.click();
         	file.on("change",function(){
         		readURL(this);
@@ -22,7 +22,7 @@
 		        var reader = new FileReader();
 
 		        reader.onload = function (e) {
-		            $('#blah').attr('src', e.target.result);
+		            $('body').append($('<img style="max-width:100px;max-height:100px;" src="'+e.target.result+'" />') );
 		        }
 
 		        reader.readAsDataURL(input.files[0]);
