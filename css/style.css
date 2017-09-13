@@ -35,6 +35,10 @@
 	text-align: center;
 }
 
+.text-white{
+	color: #fff;
+}
+
 .text-bold, .text-title{
 	font-weight: bold;
 }
