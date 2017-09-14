@@ -28,6 +28,15 @@
 	background-image: url('../icons/weather.png');
 }
 
+.overlay{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: rgba(100,0,0,0.5);
+}
+
 
 
 .home_menu_item{
