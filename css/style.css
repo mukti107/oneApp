@@ -17,6 +17,9 @@
 	background-color: #333;
 }
 
+.date_time.tile h2{
+	font-size: 18px;
+}
 .news.tile{
 	background-image: url('https://www.onlinekhabar.com/wp-content/uploads/2017/09/Bijay-moktan.jpg');
 }
