@@ -15,19 +15,20 @@
 		console.log(date.getFullYear(),date.getMonth()+1,date.getDate());
 		renderTemplate({date:[getNepaliDateInfo(bs_date)]},"#nepali_date","date_details")
 
-		start();
+		timeUpdater();
 	}
 
-	function start(){
+	function timeUpdater(){
 	    var time = new Date()
 	    var hours = time.getHours()
+	    hours=(hours>12)?hours%12:hours
 	    var minutes = time.getMinutes()
 	    minutes=((minutes < 10) ? "0" : "") + minutes
 	    var seconds = time.getSeconds()
 	    seconds=((seconds < 10) ? "0" : "") + seconds
 	    var clock = hours + ":" + minutes + ":" + seconds
 	    $("#nepali_time").html(num_to_nepali(clock));
-	    timer = setTimeout("start()",1000)
+	    timer = setTimeout("timeUpdater()",1000)
 	}
 
 	
@@ -108,12 +109,7 @@
               </div>
               <div id="content">
               	<div class="row no-gutter">
-					<div class="col-50 home_menu_item text-center weather tile" style="position:relative;background-color:{{bgColor}};">
-						<div class="absolute-center">
-							{{name}}
-						</div>
-					</div>
-					<div class="col-50 home_menu_item text-center date_time tile" style="position:relative;background-color:{{bgColor}};">
+              		<div class="col-50 home_menu_item text-center date_time tile" style="position:relative;background-color:{{bgColor}};">
 						<div class="absolute-center">
 						<a href="#" style="padding:15px 0 15px 0;color:#fff;">
 							<h1 id="nepali_time"></h1>
@@ -122,7 +118,13 @@
 						</a>
 						</div>
 					</div>
-					<div class="col-50 home_menu_item text-center news tile" style="position:relative;background-color:{{bgColor}};">
+					<div class="col-50 home_menu_item text-center weather tile" style="position:relative;background-color:{{bgColor}};">
+						<div class="absolute-center">
+							{{name}}
+						</div>
+					</div>
+					
+					<div class="col-100 home_menu_item text-center news tile" style="position:relative;background-color:{{bgColor}};">
 						<div class="absolute-center">
 						<a href="#" style="padding:15px 0 15px 0;color:#fff;">
 							<i class="icon f7-icons">{{icon}}</i><br/>
