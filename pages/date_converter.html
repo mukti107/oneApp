@@ -6,19 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
   	<script type="text/javascript" src="../js/platform.js"></script>
-  	<script type="text/javascript" src="../js/dateConverter.js"></script>
+  	<!-- <script type="text/javascript" src="../js/dateConverter.js"></script> -->
     <script type="text/javascript">
-    var nepali_numbers="०१२३४५६७८९";
-
-    function num_to_nepali($num){
-      var num=""+$num;
-      var $npNum="";
-      for(i=0;i<num.length;i++){
-        $npNum+=nepali_numbers[+num[i]]
-      }
-      return $npNum;
-    }
-
     	function initPage(){
     		renderTemplate({},"#converter","date_converter",initCallbacks)
     	}
@@ -38,16 +27,6 @@
         }
 
     		});
-
-        function getNepaliDateInfo(date){
-            return {dayName:get_day_of_week_nep(date.num_day),date:num_to_nepali(date.date),monthName:get_nepali_month(date.month),year:num_to_nepali(date.year)};
-        }
-
-        function getEnglishDateInfo(date){
-            return {dayName:get_day_of_week_eng(date.num_day),date:date.date,monthName:get_english_month(date.month),year:date.year};
-        }
-
-
 
     		$("#date_bs").on("keyup",function(){
       			var bs_date=$(this).val().split("-");
