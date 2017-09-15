@@ -38,7 +38,7 @@
 
 	function updateWeather(weather){
 		$("#weather_location").html(weather.location);
-		$("#weather_temprature").html(weather.temp);
+		$("#weather_temprature").html(weather.temp+"&deg;C");
 		$("#weather_description").html(weather.text);
 	}
 
@@ -150,8 +150,8 @@
 					<div class="col-50 home_menu_item text-center weather tile" style="position:relative;background-color:{{bgColor}};">
 						<div class="overlay"></div>
 						<div class="absolute-center text-white">
-							<h2><span id="weather_location">Kathmandu</span> <span id="weather_temprature">18</span>&deg;C</h2>
-							<h2 id="weather_description">Partly Cloudy</h2>
+							<h2><span id="weather_location"></span> <span id="weather_temprature"></span></h2>
+							<h2 id="weather_description"></h2>
 						</div>
 					</div>
               </div>
