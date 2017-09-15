@@ -3,6 +3,7 @@
 	background: #db4437;
 	position: fixed;
 	width: 100vw;
+	height: auto !important;
 }
 
 .menu_icon{
