@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>LIVE RADIO</title>
+  	<script type="text/javascript" src="../js/platform.js"></script>
+    <script type="text/javascript">
+    var loading=false;
+    var currentPage=0;
+    
+    function initPage(){
+      $.ajax({
+        url:apiBaseUrl+"/stations",
+        dataType:"json",
+        success:function(response){
+          renderTemplate({stations:response},"#content","radioStationList")
+          console.log(response);
+        },
+        error:function(err,stat,resp){
+          
+          if(err.status==401)
+            renderTemplate({logged:false},"#user_info","user_info")
+          console.log(err);
+        }
+      });
+    }
+
+    
+
+    </script>
+  </head>
+  <body>
+    <div class="views">
+        <div class="view view-main">
+          <div class="pages">
+            <div class="page" data-page="home">
+              <div id="content" class="page-content">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

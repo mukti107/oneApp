@@ -13,6 +13,13 @@
 		"showInHome":"true"
 	},
 	{
+		"name":"LIVE RADIO",
+		"link":"radio.html_newPage",
+		"icon":"social_rss",
+		"bgColor":"#00aaff",
+		"showInHome":"true"
+	},
+	{
 		"name":"NEWS",
 		"link":"news.html_newPage",
 		"icon":"social_rss",
