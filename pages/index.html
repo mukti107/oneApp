@@ -21,6 +21,9 @@
 				dataType:"json",
 				success:function(response){
 					updateWeather(response.weather);
+					$.each(response.news,function(key,item){
+						item.title=htmlDecode(item.title);
+					});
 					renderTemplate({news:response.news},"#dashboard_news","dashboard_news")
 					console.log(response);
 					//response.logged=true;
