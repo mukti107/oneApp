@@ -10,11 +10,43 @@
 
 	function initPage(){
 		getUserToken();
+		showDateTime();
+		fetchDashboardContent();
+
+		
+	}
+
+	function fetchDashboardContent(){
+		$.ajax({
+				url:apiBaseUrl+"/dashboard",
+				dataType:"json",
+				success:function(response){
+					updateWeather(response.weather);
+					renderTemplate({news:response.news},"#dashboard_news","dashboard_news")
+					console.log(response);
+					//response.logged=true;
+					//renderTemplate(response,"#user_info","user_info")
+				},
+				error:function(err,stat,resp){
+					//renderTemplate({name:"Guest"},"#user_info","user_info")
+					if(err.status==401)
+						renderTemplate({logged:false},"#user_info","user_info")
+					console.log(err);
+				}
+			});
+	}
+
+	function updateWeather(weather){
+		$("#weather_location").html(weather.location);
+		$("#weather_temprature").html(weather.temp);
+		$("#weather_description").html(weather.text);
+	}
+
+	function showDateTime(){
 		var date=new Date();
 		var bs_date=eng_to_nep(date.getFullYear(),date.getMonth()+1,date.getDate());
 		console.log(date.getFullYear(),date.getMonth()+1,date.getDate());
 		renderTemplate({date:[getNepaliDateInfo(bs_date)]},"#nepali_date","date_details")
-
 		timeUpdater();
 	}
 
@@ -118,17 +150,13 @@
 					<div class="col-50 home_menu_item text-center weather tile" style="position:relative;background-color:{{bgColor}};">
 						<div class="overlay"></div>
 						<div class="absolute-center text-white">
-							<h2>Kathmandu 18&deg;C</h2>
-							<h2>Partly Cloudy</h2>
-						</div>
-					</div>
-					
-					<div class="col-100 home_menu_item text-center news tile" style="position:relative;background-color:{{bgColor}};">
-						<div class="absolute-center text-white">
-							<h2>Kati Boleko Baje</h2>
+							<h2><span id="weather_location">Kathmandu</span> <span id="weather_temprature">18</span>&deg;C</h2>
+							<h2 id="weather_description">Partly Cloudy</h2>
 						</div>
 					</div>
               </div>
+              <div class="row no-gutter" id="dashboard_news"></div>
+
               		
 
               </div>
