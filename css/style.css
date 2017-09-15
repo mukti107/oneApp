@@ -23,9 +23,6 @@
 .date_time.tile h2{
 	font-size: 18px;
 }
-.news.tile{
-	background-image: url('https://www.onlinekhabar.com/wp-content/uploads/2015/12/Sher-Bahadur-Dauba.jpg');
-}
 
 .weather.tile{
 	background-image: url('../icons/weather.png');
@@ -37,7 +34,7 @@
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
-	background-color: rgba(100,0,0,0.5);
+	background-color: rgba(0,0,0,0.5);
 }
 
 
