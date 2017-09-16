@@ -10,7 +10,6 @@
     function initPage(){
       
       OneApp.getValue(['stations'],function(resp){
-        alert(resp.stations);
         var stations=JSON.parse(resp.stations);
         renderTemplate({stations:stations},"#stations","radioStationList")
       });
