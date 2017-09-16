@@ -12,6 +12,8 @@
 		showDateTime();
 		fetchDashboardContent();
 		OneApp.getValue(['access_token','dashboard'],function(resp){
+			var dashboard=JSON.parse(resp.dashboard);
+			loadDashboard(dashboard);
 			alert(JSON.stringify(resp));
 		});
 		
@@ -21,14 +23,7 @@
 		$.ajax({
 				url:apiBaseUrl+"/dashboard",
 				dataType:"json",
-				success:function(response){
-					command("saveValues",{dashboard:JSON.stringify(response)});
-					updateWeather(response.weather);
-					$.each(response.news,function(key,item){
-						item.title=htmlDecode(item.title);
-					});
-					renderTemplate({news:response.news},"#dashboard_news","dashboard_news")
-				},
+				success:loadDashboard,
 				error:function(err,stat,resp){
 					//renderTemplate({name:"Guest"},"#user_info","user_info")
 					if(err.status==401)
@@ -37,6 +32,15 @@
 				}
 			});
 	}
+
+	function loadDashboard(response){
+					command("saveValues",{dashboard:JSON.stringify(response)});
+					updateWeather(response.weather);
+					$.each(response.news,function(key,item){
+						item.title=htmlDecode(item.title);
+					});
+					renderTemplate({news:response.news},"#dashboard_news","dashboard_news")
+				}
 
 	function updateWeather(weather){
 		$("#weather_location").html(weather.location);
