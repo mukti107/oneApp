@@ -9,21 +9,27 @@
     
     function initPage(){
       command("updateAudioPlayerActivity");
+      OneApp.getValue(['stations'],function(resp){
+        var stations=JSON.parse(resp.stations);
+        renderTemplate({stations:stations},"#stations","radioStationList")
+      });
+
       $.ajax({
         url:apiBaseUrl+"/stations",
         dataType:"json",
         success:function(response){
+          command("saveValues",{stations:JSON.stringify(response)});
           renderTemplate({stations:response},"#stations","radioStationList")
-          console.log(response);
         },
         error:function(err,stat,resp){
-          
           if(err.status==401)
             renderTemplate({logged:false},"#user_info","user_info")
           console.log(err);
         }
       });
     }
+
+
 
     function updatePlayer(status){
       if(status.active){

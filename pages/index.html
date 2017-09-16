@@ -22,7 +22,10 @@
 		$.ajax({
 				url:apiBaseUrl+"/dashboard",
 				dataType:"json",
-				success:loadDashboard,
+				success:function(resp){
+					loadDashboard(resp);
+					command("saveValues",{dashboard:JSON.stringify(response)});
+				}
 				error:function(err,stat,resp){
 					//renderTemplate({name:"Guest"},"#user_info","user_info")
 					if(err.status==401)
@@ -33,7 +36,6 @@
 	}
 
 	function loadDashboard(response){
-					command("saveValues",{dashboard:JSON.stringify(response)});
 					updateWeather(response.weather);
 					$.each(response.news,function(key,item){
 						item.title=htmlDecode(item.title);
