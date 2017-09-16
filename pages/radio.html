@@ -23,13 +23,7 @@
         success:function(response){
           command("saveValues",{stations:JSON.stringify(response)});
           renderTemplate({stations:response},"#stations","radioStationList")
-        },
-        error:function(err,stat,resp){
-          if(err.status==401)
-            renderTemplate({logged:false},"#user_info","user_info")
-          console.log(err);
-        }
-      });
+        }});
     }
 
 
