@@ -8,6 +8,7 @@ OneApp.getValue=function(keys,callback){
 	});
 	OneApp.callbacks[params.callback]=callback;
 	command("getValues",params);
+	//con
 }
 
 var platform="material";
