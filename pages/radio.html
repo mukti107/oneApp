@@ -8,11 +8,14 @@
     var currentPage=0;
     
     function initPage(){
-      command("updateAudioPlayerActivity");
+      
       OneApp.getValue(['stations'],function(resp){
+        alert(resp.stations);
         var stations=JSON.parse(resp.stations);
         renderTemplate({stations:stations},"#stations","radioStationList")
       });
+
+      command("updateAudioPlayerActivity");
 
       $.ajax({
         url:apiBaseUrl+"/stations",
