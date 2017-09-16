@@ -20,7 +20,6 @@ var pollfishConfig = {
   api_key: "6e3a7717-dcc6-48c9-b750-06b52b414331",
   debug: false,
   ready:function(){
-  	alert("ready");
   	Pollfish.showIndicator();
   }
 };

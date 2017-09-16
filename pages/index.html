@@ -14,7 +14,6 @@
 		OneApp.getValue(['access_token','dashboard'],function(resp){
 			var dashboard=JSON.parse(resp.dashboard);
 			loadDashboard(dashboard);
-			alert(JSON.stringify(resp));
 		});
 		
 	}
