@@ -11,7 +11,9 @@
 		getUserToken();
 		showDateTime();
 		fetchDashboardContent();
-
+		OneApp.getValue(['access_token','dashboard'],function(resp){
+			alert(JSON.stringify(resp));
+		});
 		
 	}
 
@@ -20,14 +22,12 @@
 				url:apiBaseUrl+"/dashboard",
 				dataType:"json",
 				success:function(response){
+					command("saveValues",{dashboard:JSON.stringify(response)});
 					updateWeather(response.weather);
 					$.each(response.news,function(key,item){
 						item.title=htmlDecode(item.title);
 					});
 					renderTemplate({news:response.news},"#dashboard_news","dashboard_news")
-					console.log(response);
-					//response.logged=true;
-					//renderTemplate(response,"#user_info","user_info")
 				},
 				error:function(err,stat,resp){
 					//renderTemplate({name:"Guest"},"#user_info","user_info")
@@ -111,7 +111,6 @@
 			data:{fb_token:token},
 			dataType:"json",
 			success:function(resp){
-				onReceiveUserToken(resp.access_token);
 				command("saveValues?access_token="+resp.access_token+"&refresh_token="+resp.refresh_token);
 			},
 			error:function(err){

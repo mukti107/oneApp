@@ -1,9 +1,12 @@
 var OneApp={callbacks:{}};
 
-OneApp.getValue=function(options){
-	var tempFnName= "oneApp"+Math.floor(Math.random()*10000000);
-	console.log(tempFnName);
-	OneApp.callbacks[tempFnName]=options.callback;
+OneApp.getValue=function(keys,callback){
+	var params={};
+	var params.callback= "oneApp"+Math.floor(Math.random()*10000000);
+	$.each(keys,function(key,value){
+		params[value]='';
+	});
+	OneApp.callbacks[params.callback]=callback;
 	command("getValues?callback="+tempFnName);
 }
 
