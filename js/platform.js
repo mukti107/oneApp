@@ -2,12 +2,12 @@ var OneApp={callbacks:{}};
 
 OneApp.getValue=function(keys,callback){
 	var params={};
-	var params.callback= "oneApp"+Math.floor(Math.random()*10000000);
+	params.callback= "oneApp"+Math.floor(Math.random()*10000000);
 	$.each(keys,function(key,value){
 		params[value]='';
 	});
 	OneApp.callbacks[params.callback]=callback;
-	command("getValues?callback="+tempFnName);
+	command("getValues",params);
 }
 
 var platform="material";
