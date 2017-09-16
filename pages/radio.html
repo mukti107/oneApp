@@ -8,6 +8,7 @@
     var currentPage=0;
     
     function initPage(){
+      command("updateAudioPlayerActivity");
       $.ajax({
         url:apiBaseUrl+"/stations",
         dataType:"json",
@@ -24,6 +25,11 @@
       });
     }
 
+    function updatePlayer(status){
+      $("radio_title").html(status.name);
+      $("radio_title").html("playing:"+status.isPlaying);
+    }
+
     
 
     </script>
@@ -37,8 +43,8 @@
                 <div class="list-block" id="stations"></div>
               </div>
               <div id="player">
-                <h2 class="text-white">Station name</h2>
-                <h3 class="text-white">stream</h3>
+                <h2 id="radio_title" class="text-white">Station name</h2>
+                <h3 id="radio_status" class="text-white">stream</h3>
               </div>
             </div>
           </div>
