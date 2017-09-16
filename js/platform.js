@@ -135,7 +135,6 @@ function command(action,options){
 			params.push(key+"="+encodeURIComponent(value));
 		});
 		url+=params.join("&");
-		alert(url)
 	}
 
 	var iframe = document.createElement("IFRAME");
