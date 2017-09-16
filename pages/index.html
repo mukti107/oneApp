@@ -24,8 +24,8 @@
 				dataType:"json",
 				success:function(resp){
 					loadDashboard(resp);
-					command("saveValues",{dashboard:JSON.stringify(response)});
-				}
+					command("saveValues",{dashboard:JSON.stringify(resp)})
+				},
 				error:function(err,stat,resp){
 					//renderTemplate({name:"Guest"},"#user_info","user_info")
 					if(err.status==401)
@@ -36,12 +36,12 @@
 	}
 
 	function loadDashboard(response){
-					updateWeather(response.weather);
-					$.each(response.news,function(key,item){
-						item.title=htmlDecode(item.title);
-					});
-					renderTemplate({news:response.news},"#dashboard_news","dashboard_news")
-				}
+		updateWeather(response.weather);
+		$.each(response.news,function(key,item){
+			item.title=htmlDecode(item.title);
+		});
+		renderTemplate({news:response.news},"#dashboard_news","dashboard_news")
+	}
 
 	function updateWeather(weather){
 		$("#weather_location").html(weather.location);
