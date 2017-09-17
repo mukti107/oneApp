@@ -13,6 +13,11 @@
 		"showInHome":"true"
 	},
 	{
+		"name":"LIVE TV",
+		"link":"oneapp://liveTV",
+		"icon":"list"
+	},
+	{
 		"name":"LIVE RADIO",
 		"link":"radio.html_newPage",
 		"icon":"social_rss",
