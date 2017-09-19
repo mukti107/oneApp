@@ -107,3 +107,16 @@
   }
 
 
+
+  ul.breadcrumb{
+  	list-style: none;
+  }
+  ul.breadcrumb>li{
+  	float: left;
+  }
+
+  ul.breadcrumb>li:not(:last-child):after{
+  	content:"\00a0>\00a0";
+  }
+
+

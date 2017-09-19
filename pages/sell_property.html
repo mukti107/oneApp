@@ -8,21 +8,44 @@
     	var search={};
     	var selected=null;
       function initPage(){
-        
+			selectCategory(null);        
+			command("showMenuIcons?search");
       }
 
-      function searchCategoryAsync(query){
-      	setTimeout(function(){searchCategory(query)},0);
+      function searchTextChange(query){
+      		setTimeout(function(){searchCategory(query)},0);
       }
+
+
+      function selectCategory(cat){
+      	selected=cat;
+      	searchCategoryAsync('');
+      	var tree=getCategoryTree(cat,true);
+      	tree.splice(0,0,{name:'All',id:null});
+      	$.each(tree,function(key,item){
+      		item.link="javascript:selectCategory("+item.id+")";
+      	});
+      	renderTemplate({items:tree},"#selected_category","breadcrumb");
+      	$("#selected_category").html(JSON.stringify(tree));
+      }
+
+      function selectStep(step){
+      	if(step==1){
+      		$("#categories_view").slideUp();
+      		$("#details_view").slideDown();
+      	}
+      }
+
+      
 
       function searchCategory(query){
       	if(query.length<2 && query.length>0)
       		return;
-      	var search = new RegExp(query, "i")
+      	var q = new RegExp(query, "i")
       	if(!search[query] && query.length>0){
       		var match=[];
 	      	$.each(categories,function(key,value){
-	      		if(search.test(value.name)) {
+	      		if(q.test(value.name)) {
 	      			match.push(key);
 	      		}
 	      	});
@@ -39,10 +62,36 @@
 
       	var trees=[];
       	$.each(search[query],function(key,value){
-      		trees.push({title:getCategoryTree(value).join(" > ")});
+      		trees.push({leafID:value, tree:getCategoryTree(value)});
       	});
 
-      	displayList({items:trees},"#categories");
+      	var treeInsideSelected=filterInsideSelected(trees);
+
+      	if(treeInsideSelected.length==0 && query.length==0)
+      		proceed();
+
+      	renderTemplate({categories:treeInsideSelected},"#categories","categories_list");
+      }
+
+      function filterInsideSelected(list){
+      	if(!selected)
+      		return list;
+      	var newList=[];
+      	$.each(list,function(key,item){
+      		var inParent=false;
+      		$.each(item.tree,function(nodeKey,node){
+      			if(node.parent==selected){
+      				item.tree.splice(0,nodeKey);
+      				inParent=true;
+      			}
+      		});
+      		if(inParent)
+      			newList.push(item);
+      			
+      	});
+
+      	return newList;
+
       }
 
       function getCategoryTree(index,full){
@@ -50,7 +99,7 @@
       	var tree=[];
       	while(curentNode && (curentNode != selected || full)){ 
       		var node=categories[curentNode];
-      		tree.push(node.name);
+      		tree.push(node);
       		curentNode=node.parent
       	}
       	return tree.reverse();
@@ -79,11 +128,42 @@
     </script>
 </head>
 <body>
-<input type="" onkeyup="searchCategoryAsync(this.value)" name="">
-<div id="categories" class="list-block">
-	
-</div>
-      <img id="blah">
-      <a href="javascript:selectImage()">Add Image</a>
+
+	<div class="views">
+        <div class="view view-mai" id="categories_view">
+          <div class="pages">
+            <div class="page" data-page="home">
+            	<!-- <form class="searchbar searchbar-init" data-search-list=".list-block-search" data-search-in=".item-title" data-found=".searchbar-found" data-not-found=".searchbar-not-found">
+			        <div class="searchbar-input">
+			            <input onkeyup="searchCategoryAsync(this.value)" type="search" placeholder="Search">
+			            <a href="#" class="searchbar-clear"></a>
+			        </div>
+			        <a href="#" class="searchbar-cancel">Cancel</a>
+			    </form> -->
+			    
+			    <div class="searchbar-overlay"></div>
+            	<div class="page-content">
+            		<div class="content-block-title" id="selected_category">Full Layout</div>
+					<div id="categories" class="list-block">
+						
+					</div>
+					      <img id="blah">
+					      <a href="javascript:selectImage()">Add Image</a>
+		     	</div>
+	      	</div>
+	      </div>
+	    </div>
+	    <div class="view view-main" id="details_view">
+	    	<div class="page" data-page="sample">
+			    <div class="searchbar-overlay"></div>
+            	<div class="page-content">
+			      <img id="blah">
+			      <a href="javascript:selectImage()">Add Image</a>
+		     	</div>
+	      	</div>
+	    </div>
+
+	    </div>
+	 </div>
 </body>
 </html>
