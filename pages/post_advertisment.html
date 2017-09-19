@@ -129,7 +129,7 @@
 		    if (input.files && input.files[0]) {
 		        var reader = new FileReader();
 		        reader.onload = function (e) {
-		            $('body').append($('<img style="max-width:100px;max-height:100px;" src="'+e.target.result+'" />') );
+		            $('<img src="'+e.target.result+'" />').insertBefore("#add_image_button");
 		        }
 		        reader.readAsDataURL(input.files[0]);
 		    }
@@ -143,15 +143,6 @@
         <div class="view view-mai" id="categories_view">
           <div class="pages">
             <div class="page" data-page="home">
-            	<!-- <form class="searchbar searchbar-init" data-search-list=".list-block-search" data-search-in=".item-title" data-found=".searchbar-found" data-not-found=".searchbar-not-found">
-			        <div class="searchbar-input">
-			            <input onkeyup="searchTextChange(this.value)" type="search" placeholder="Search">
-			            <a href="#" class="searchbar-clear"></a>
-			        </div>
-			        <a href="#" class="searchbar-cancel">Cancel</a>
-			    </form> -->
-			    
-			    <div class="searchbar-overlay"></div>
             	<div class="page-content">
             		<div id="selected_category"></div>
 					<div id="categories" style="margin-top: 0;" class="list-block"></div>
@@ -163,8 +154,14 @@
 	    	<div class="page" data-page="sample">
 			    <div class="searchbar-overlay"></div>
             	<div class="page-content">
-			      <img id="blah">
-			      <a href="javascript:selectImage()">Add Image</a>
+            	<div id="upload_images">
+            		<section id="uploaded_images">
+            			<img src="/images/add_image.png" id="add_image_button" onClick="selectImage()"/>
+            		</section>
+            		
+            			
+            		
+            	</div>
 		     	</div>
 	      	</div>
 	    </div>

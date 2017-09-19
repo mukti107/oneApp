@@ -107,6 +107,32 @@
   }
 
 
+  /*Post Advertisment*/
+
+  #upload_images{
+  	white-space: nowrap;
+  	overflow: scroll;
+  	overflow-y: hidden;
+  	width: 100vw;
+  	
+  }
+
+  #uploaded_images{
+  	position: relative;
+  	max-height: 150px;
+  }
+
+  #upload_images img{
+  	height: 148px;
+  	border: 1px solid #666;
+  	margin-right: 5px;
+  }
+
+  #add_image_button{
+  	border:none !important;
+  }
+
+
 
   ul.breadcrumb{
   	list-style: none;
@@ -129,4 +155,8 @@
 .clearfix{
 	clear: both;
 }
+
+
+
+
 
