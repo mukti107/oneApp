@@ -22,11 +22,15 @@
       	selected=cat;
       	searchTextChange('');
       	var tree=getCategoryTree(cat,true);
-      	tree.splice(0,0,{name:'All',id:null});
-      	$.each(tree,function(key,item){
-      		item.link="javascript:selectCategory("+item.id+")";
-      	});
-      	renderTemplate({items:tree},"#selected_category","breadcrumb");
+      	if(cat){
+	      	tree.splice(0,0,{name:'All',id:null});
+	      	$.each(tree,function(key,item){
+	      		item.link="javascript:selectCategory("+item.id+")";
+	      	});
+	      	renderTemplate({items:tree},"#selected_category","breadcrumb");
+      	}else{
+      		$("#selected_category").html();
+      	}
       }
 
       function selectStep(step){
