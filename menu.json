@@ -6,16 +6,16 @@
 		"bgColor":"#00aaff"
 	},
 	{
+		"name":"POST ADVERTISMENT (FREE)",
+		"link":"sell_property.html_newPage",
+		"icon":"list"
+	},
+	{
 		"name":"SCAN RECHARGE CARD",
 		"link":"oneapp://rechargeCardScanner",
 		"icon":"card",
 		"bgColor":"#aa0000",
 		"showInHome":"true"
-	},
-	{
-		"name":"LIVE TV",
-		"link":"oneapp://liveTV",
-		"icon":"list"
 	},
 	{
 		"name":"LIVE RADIO",
@@ -58,10 +58,5 @@
 		"icon":"calendar",
 		"bgColor":"#aa0000",
 		"showInHome":"true"
-	},
-	{
-		"name":"SELL USED ITEM",
-		"link":"sell_property.html_newPage",
-		"icon":"list"
 	}
 ]
