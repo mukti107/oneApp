@@ -27,9 +27,12 @@
 	      	$.each(tree,function(key,item){
 	      		item.link="javascript:selectCategory("+item.id+")";
 	      	});
-	      	renderTemplate({items:tree},"#selected_category","breadcrumb");
+	      	renderTemplate({items:tree},"#category_breadcrumb","breadcrumb");
+	      	var sCat=categories[selected];
+	      	var pCat =(sCat.parent && categories[sCat.parent])||{name:""};
+	      	$("#selected_category").html(sCat.name+"("+pCat.name+")");
       	}else{
-      		$("#selected_category").html("<h2>Please select a Category</h2>");
+      		$("#category_breadcrumb").html("<h2>Please select a Category</h2>");
       	}
       }
 
@@ -144,7 +147,7 @@
           <div class="pages">
             <div class="page" data-page="home">
             	<div class="page-content">
-            		<div id="selected_category"></div>
+            		<div id="category_breadcrumb"></div>
 					<div id="categories" style="margin-top: 0;" class="list-block"></div>
 		     	</div>
 	      	</div>
@@ -169,7 +172,7 @@
 				      <div href="#" class="item-content item-link">
 				        <div class="item-inner">
 				          <div class="item-title">Category</div>
-				          <div class="item-after">Label</div>
+				          <div class="item-after" id="selected_category">Label</div>
 				        </div>
 				      </div>
 				    </li>
