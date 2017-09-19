@@ -31,7 +31,7 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
 //identify platform
 var device = window.navigator.platform;
 var iosPlatforms = ['iPhone', 'iPad', 'iPod'];
-if(iosPlatforms.indexOf(device)!=-1)
+// if(iosPlatforms.indexOf(device)!=-1)
 	platform="ios";
 
 ROOT_DIR=document.currentScript.src.split("js")[0];
