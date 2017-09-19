@@ -1,9 +1,18 @@
 <ul>
 {{#categories}}
 	<li onClick="selectCategory({{leafID}})">
-		{{#tree}}
-			{{name}} > 
-		{{/tree}}
+
+		<div class="item-content">
+			<div class="item-inner">
+	            <div class="item-title">
+	                {{#tree}}
+						{{name}} > 
+					{{/tree}}
+	            </div>
+	        </div>
+        </div>
+
+		
 	</li>
 {{/categories}}
 </ul>

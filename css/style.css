@@ -110,13 +110,18 @@
 
   ul.breadcrumb{
   	list-style: none;
+  	padding: 5px;
   }
   ul.breadcrumb>li{
   	float: left;
+  	line-height: 35px;
   }
 
-  ul.breadcrumb>li:not(:last-child):after{
-  	content:"\00a0>\00a0";
+  ul.breadcrumb>li:not(:last-of-type):after{
+  	content:"\00a0\0203A\00a0";
   }
 
+.clearfix{
+	clear: both;
+}
 

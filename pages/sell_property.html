@@ -10,6 +10,7 @@
       function initPage(){
 			selectCategory(null);        
 			command("showMenuIcons?search");
+			selectStep(1);
       }
 
       function searchTextChange(query){
@@ -26,13 +27,18 @@
       		item.link="javascript:selectCategory("+item.id+")";
       	});
       	renderTemplate({items:tree},"#selected_category","breadcrumb");
-      	$("#selected_category").html(JSON.stringify(tree));
       }
 
       function selectStep(step){
-      	if(step==1){
+      	switch(step){
+      		case 1:
+      		$("#categories_view").slideDown();
+      		$("#details_view").slideUp();
+      		break;
+      		case 2:
       		$("#categories_view").slideUp();
       		$("#details_view").slideDown();
+      		break;
       	}
       }
 
@@ -68,7 +74,7 @@
       	var treeInsideSelected=filterInsideSelected(trees);
 
       	if(treeInsideSelected.length==0 && query.length==0)
-      		proceed();
+			selectStep(2);
 
       	renderTemplate({categories:treeInsideSelected},"#categories","categories_list");
       }
@@ -143,12 +149,8 @@
 			    
 			    <div class="searchbar-overlay"></div>
             	<div class="page-content">
-            		<div class="content-block-title" id="selected_category">Full Layout</div>
-					<div id="categories" class="list-block">
-						
-					</div>
-					      <img id="blah">
-					      <a href="javascript:selectImage()">Add Image</a>
+            		<div id="selected_category"></div>
+					<div id="categories" style="margin-top: 0;" class="list-block"></div>
 		     	</div>
 	      	</div>
 	      </div>
