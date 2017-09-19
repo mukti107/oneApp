@@ -121,6 +121,11 @@
   	content:"\00a0\0203A\00a0";
   }
 
+  .hierarchy:not(:last-of-type):after{
+  	content:"\00a0\0203A\00a0";
+  	font-size: 18px;
+  }
+
 .clearfix{
 	clear: both;
 }
