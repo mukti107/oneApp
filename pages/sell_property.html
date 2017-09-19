@@ -19,7 +19,7 @@
 
       function selectCategory(cat){
       	selected=cat;
-      	searchCategoryAsync('');
+      	searchTextChange('');
       	var tree=getCategoryTree(cat,true);
       	tree.splice(0,0,{name:'All',id:null});
       	$.each(tree,function(key,item){
@@ -135,7 +135,7 @@
             <div class="page" data-page="home">
             	<!-- <form class="searchbar searchbar-init" data-search-list=".list-block-search" data-search-in=".item-title" data-found=".searchbar-found" data-not-found=".searchbar-not-found">
 			        <div class="searchbar-input">
-			            <input onkeyup="searchCategoryAsync(this.value)" type="search" placeholder="Search">
+			            <input onkeyup="searchTextChange(this.value)" type="search" placeholder="Search">
 			            <a href="#" class="searchbar-clear"></a>
 			        </div>
 			        <a href="#" class="searchbar-cancel">Cancel</a>
