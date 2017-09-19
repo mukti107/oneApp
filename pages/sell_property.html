@@ -23,7 +23,7 @@
       	searchTextChange('');
       	var tree=getCategoryTree(cat,true);
       	if(cat){
-	      	tree.splice(0,0,{name:'All',id:null});
+	      	tree.splice(0,0,{name:'Categories',id:null});
 	      	$.each(tree,function(key,item){
 	      		item.link="javascript:selectCategory("+item.id+")";
 	      	});
