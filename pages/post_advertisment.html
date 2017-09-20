@@ -12,7 +12,7 @@
       function initPage(){
 			selectCategory(null);        
 			command("showMenuIcons?search");
-			selectStep(3);
+			selectStep(1);
 			renderTemplate({images:images},"#upload_images","images");
 			OneApp.getValue(['access_token'],function(resp){token=resp.access_token;});
       }
