@@ -8,10 +8,12 @@
     	var search={};
     	var selected=null;
     	var token=null;
+    	var images=[];
       function initPage(){
 			selectCategory(null);        
 			command("showMenuIcons?search");
 			selectStep(1);
+			renderTemplate({images:images},"#upload_images","images");
 			OneApp.getValue(['access_token'],function(resp){token=resp.access_token;});
       }
 
@@ -42,7 +44,8 @@
       	switch(step){
       		case 1:
       		$("#categories_view").slideDown();
-      		$("#details_view").slideUp();
+      		if($("#details_view").is(":visible"))
+      			$("#details_view").slideUp();
       		break;
       		case 2:
       		$("#categories_view").slideUp();
@@ -134,7 +137,9 @@
 		    if (input.files && input.files[0]) {
 		        var reader = new FileReader();
 		        reader.onload = function (e) {
-		            $('<img src="'+e.target.result+'" />').insertBefore("#add_image_button");
+		        	images.push(e.target.result);
+		        	renderTemplate({images:images},"#upload_images","images")
+		            // $('<img src="'+e.target.result+'" />').insertBefore("#add_image_button");
 		        }
 		        reader.readAsDataURL(input.files[0]);
 		    }
@@ -142,12 +147,14 @@
 
 		function post() {
 			var data={
-				title:"abc",
-				description:"apple",
-				price:"2500",
-				negotiable:0,
-				category_id:5
+				title:$("#title").val(),
+				description:$("#description").val(),
+				price:$("#price").val(),
+				negotiable:($("#negotiable").is(":checked") && 1)||0,
+				images:images,
+				category_id:selected
 			};
+			console.log(data);
 			$.ajax({
 				url:apiBaseUrl+"/advertisment",
 				dataType:"json",
@@ -185,6 +192,11 @@
 	    </div>
 	    <div class="view view-main" id="details_view" style="display:none;">
 	    	<div class="page" data-page="sample">
+	    		<div class="toolbar toolbar-bottom">
+				    <div onclick="post()"  class="toolbar-inner" style="justify-content: center;">
+				      <a href="#" class="link">POST ADVERTISMENT</a>
+				  </div>
+			    </div>
             	<div class="page-content">
 
 				<div class="list-block">
@@ -193,7 +205,7 @@
 				      <div class="item-content">
 				        <div class="item-inner">
 				          <div class="item-input">
-				            <input type="text" placeholder="Enter advertisment title">
+				            <input type="text" id="title" placeholder="Enter advertisment title">
 				          </div>
 				        </div>
 				      </div>
@@ -211,7 +223,7 @@
 				        <div class="item-inner">
 				          <div class="item-title label">Price (Nrs.)</div>
 				          <div class="item-input">
-				            <input type="number" style="text-align: right;" placeholder="Price">
+				            <input type="number" id="price" style="text-align: right;" placeholder="Price">
 				          </div>
 				        </div>
 				      </div>
@@ -222,7 +234,7 @@
 				          <div class="item-title label">Negotiable</div>
 				          <div class="item-input">
 				            <label class="label-switch" style="float:right;">
-				              <input type="checkbox">
+				              <input id="negotiable" type="checkbox">
 				              <div class="checkbox"></div>
 				            </label>
 				          </div>
@@ -234,7 +246,7 @@
 				        <div class="item-inner">
 				          <div class="item-title label">Deadline</div>
 				          <div class="item-input">
-				            <input type="datetime-local" style="text-align: right;" placeholder="AD title">
+				            <input type="datetime-local" id="deadline" style="text-align: right;" placeholder="AD title">
 				          </div>
 				        </div>
 				      </div>
@@ -249,7 +261,7 @@
 				      <div class="item-content">
 				        <div class="item-inner">
 				          <div class="item-input">
-				            <textarea placeholder="Enter description..."></textarea>
+				            <textarea id="description" placeholder="Enter description..."></textarea>
 				          </div>
 				        </div>
 				      </div>
@@ -262,16 +274,11 @@
 				<ul>
 					<li>
 						<div id="upload_images">
-			            		<section id="uploaded_images">
-			            			<img src="/images/add_image.png" id="add_image_button" onClick="selectImage()"/>
-			            		</section>
+			            		
 			            	</div>
 						</div> 
 					</li>
 					<ul>
-					<li>
-						<button onclick="post()">Post</button>
-					</li>
 				</ul>
 		     	</div>
 		     	

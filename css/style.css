@@ -6,6 +6,10 @@
 	height: auto !important;
 }
 
+.navbar, .subnavbar, .toolbar{
+	background: #db4437;
+}
+
 .menu_icon{
 	max-width: 32px;
 }
