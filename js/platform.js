@@ -12,9 +12,9 @@ OneApp.getValue=function(keys,callback){
 }
 
 var platform="material";
-// var apiBaseUrl="http://localhost:8000/api";
-var apiBaseUrl="http://oneapp.ezzar.com/api";
-var notificationServerUrl="http://192.168.100:3000";
+var apiBaseUrl="http://192.168.100.5:8000/api";
+// var apiBaseUrl="http://oneapp.ezzar.com/api";
+var notificationServerUrl="http://192.168.100.5:3000";
 var enableNavBar="YES";
 
 
