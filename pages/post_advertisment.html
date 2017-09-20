@@ -168,7 +168,7 @@
 					selectStep(3);
 				},
 				error:function(err,stat,resp){
-					alert("error");
+					alert(JSON.stringify(err));
 					if(err.status==401){
 						//renderTemplate({logged:false},"#user_info","user_info")
 					}
