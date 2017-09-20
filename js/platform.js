@@ -200,6 +200,19 @@ function htmlDecode(value) {
 }
 
 
+function resizeImg(imageURL, width, height) {
+    var canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    var context = canvas.getContext("2d");
+    var deferred = $.Deferred();
+    $("<img/>").attr("src", imageURL).load(function() {
+        context.scale(width/this.width,  height/this.height);
+        context.drawImage(this, 0, 0); 
+        deferred.resolve(canvas.toDataURL());               
+     });
+     return deferred.promise();    
+}
 
 
 
