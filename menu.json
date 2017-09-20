@@ -11,6 +11,11 @@
 		"icon":"list"
 	},
 	{
+		"name":"CHAT",
+		"link":"chat.html_newPage",
+		"icon":"list"
+	},
+	{
 		"name":"SCAN RECHARGE CARD",
 		"link":"oneapp://rechargeCardScanner",
 		"icon":"card",
