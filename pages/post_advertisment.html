@@ -51,6 +51,10 @@
       		$("#categories_view").slideUp();
       		$("#details_view").slideDown();
       		break;
+      		case 3:
+      		$("#details_view").slideUp();
+      		$("#success_view").slideDown();
+      		break;
       	}
       }
 
@@ -161,7 +165,7 @@
 				method:"POST",
 				data:data,
 				success:function(resp){
-					alert("success");
+					selectStep(3);
 				},
 				error:function(err,stat,resp){
 					alert("error");
@@ -171,7 +175,9 @@
 				},
 				beforeSend: function (xhr) {
 			        xhr.setRequestHeader('Authorization', "Bearer "+token);
-			    }
+			    },
+		    	beforeSend:function(){loading=true; command("showProgress")},
+      			complete:function(){loading=false;command("dismissProgress");}
 			});
 		}
 
@@ -285,8 +291,18 @@
 	      	</div>
 
 	    </div>
-
 	    </div>
+
+	    <div class="view" id="success_view">
+          <div class="pages">
+            <div class="page" data-page="home">
+            	<div class="page-content">
+            		AD posted succesfully
+		     	</div>
+	      	</div>
+	      </div>
+	    </div>
+
 	 </div>
 </body>
 </html>
