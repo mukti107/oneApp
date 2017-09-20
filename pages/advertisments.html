@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>CHAT</title>
+  	<script type="text/javascript" src="../js/platform.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+    <script type="text/javascript">
+    var socket;
+    var token;
+    function initPage(){
+      OneApp.getValue(['access_token'],function(resp){
+        token=resp.access_token;
+        fetchChats();
+      });
+
+      socket = io(notificationServerUrl,{query: {token: token}});
+        
+        socket.on('message', function(msg){
+            console.log(msg);
+          });
+    }
+
+    function fetchChats(){
+        $.ajax({
+        url:apiBaseUrl+"/chat",
+        dataType:"json",
+        success:function(response){
+          $("#chats").html(JSON.stringify(response));
+          //renderTemplate({stations:response},"#stations","radioStationList")
+        },
+        error:function(error){
+          $("#chats").html(JSON.stringify(error));
+        },
+        beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
+      });
+    }
+
+    function sendMessage(){
+      socket.emit('message', "hello");
+    }
+
+    
+
+    </script>
+  </head>
+  <body>
+    <div class="views">
+        <div class="view view-main">
+          <div class="pages">
+            <div class="page" data-page="home">
+              <div id="content" class="page-content">                
+                <div class="list-block" id="chats"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

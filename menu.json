@@ -16,6 +16,11 @@
 		"icon":"list"
 	},
 	{
+		"name":"ADVERTISMENTS",
+		"link":"advertisments.html_newPage",
+		"icon":"list"
+	},
+	{
 		"name":"SCAN RECHARGE CARD",
 		"link":"oneapp://rechargeCardScanner",
 		"icon":"card",
