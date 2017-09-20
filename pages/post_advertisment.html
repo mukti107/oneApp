@@ -150,7 +150,6 @@
 		}
 
 		function post() {
-			alert(token);
 			var data={
 				title:$("#title").val(),
 				description:$("#description").val(),
@@ -169,15 +168,15 @@
 					selectStep(3);
 				},
 				error:function(err,stat,resp){
-					alert(JSON.stringify(err));
+					command("alert",{message:"An error occoured posting the adsvertisment"});
 					if(err.status==401){
-						//renderTemplate({logged:false},"#user_info","user_info")
+						
 					}
 				},
 				beforeSend: function (xhr) {
+					loading=true; command("showProgress");
 			        xhr.setRequestHeader('Authorization', "Bearer "+token);
 			    },
-		    	beforeSend:function(){loading=true; command("showProgress")},
       			complete:function(){loading=false;command("dismissProgress");}
 			});
 		}
