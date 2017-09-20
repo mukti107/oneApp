@@ -12,7 +12,7 @@
       function initPage(){
 			selectCategory(null);        
 			command("showMenuIcons?search");
-			selectStep(1);
+			selectStep(3);
 			renderTemplate({images:images},"#upload_images","images");
 			OneApp.getValue(['access_token'],function(resp){token=resp.access_token;});
       }
@@ -41,18 +41,21 @@
       }
 
       function selectStep(step){
+      	var views=["categories_view","details_view","success_view"];
+      	$.each(views,function(key,value){
+      		if($("#"+value).is(":visible"))
+      			$("#"+value).slideUp();
+      	});
+
       	switch(step){
       		case 1:
       		$("#categories_view").slideDown();
-      		if($("#details_view").is(":visible"))
-      			$("#details_view").slideUp();
+      		
       		break;
       		case 2:
-      		$("#categories_view").slideUp();
       		$("#details_view").slideDown();
       		break;
       		case 3:
-      		$("#details_view").slideUp();
       		$("#success_view").slideDown();
       		break;
       	}
@@ -186,7 +189,7 @@
 <body>
 
 	<div class="views">
-        <div class="view view-mai" id="categories_view">
+        <div class="view view-mai" id="categories_view" style="display: none;">
           <div class="pages">
             <div class="page" data-page="home">
             	<div class="page-content">
@@ -291,13 +294,16 @@
 	      	</div>
 
 	    </div>
-	    </div>
+	    
 
 	    <div class="view" id="success_view">
           <div class="pages">
             <div class="page" data-page="home">
             	<div class="page-content">
-            		AD posted succesfully
+	            	<div class="absolute-center text-center color-green">
+	            		<i class="f7-icons color-green size-100">check_round</i><br/><br/>
+	            		Congratulations!! Your advertisment has been posted succesfully.
+	        		</div>
 		     	</div>
 	      	</div>
 	      </div>

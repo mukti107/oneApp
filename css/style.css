@@ -61,6 +61,12 @@
 	transform:translate(-50%, -50%);
 }
 
+.color-green{
+	color:#00897b;
+}
+
+.size-100 { font-size: 100px }
+.size-30 { font-size: 30px }
 .size-15 { font-size: 15px }
 
 .size-12 { font-size: 12px }
