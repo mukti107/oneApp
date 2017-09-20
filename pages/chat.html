@@ -23,14 +23,14 @@
 
     function fetchChats(){
         $.ajax({
-        url:apiBaseUrl+"/chats",
+        url:apiBaseUrl+"/chat",
         dataType:"json",
         success:function(response){
-          $("#chats").hml(JSON.stringify(response));
+          $("#chats").html(JSON.stringify(response));
           //renderTemplate({stations:response},"#stations","radioStationList")
         },
         error:function(error){
-          $("#chats").hml(JSON.stringify(error));
+          $("#chats").html(JSON.stringify(error));
         },
         beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
       });
