@@ -24,7 +24,7 @@
         fetchConversation();
       });
 
-      socket = io(notificationServerUrl,{query: {user_id: params['user'],chat_id:params["id"]}});
+      socket = io(notificationServerUrl,{query: {chat_id:params["id"]}});
         
         socket.on('message', function(msg){
             showMessage(msg);

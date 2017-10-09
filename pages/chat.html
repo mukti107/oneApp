@@ -3,7 +3,6 @@
   <head>
   	<title>CHAT</title>
   	<script type="text/javascript" src="../js/platform.js"></script>
-   
     <script type="text/javascript">
     var socket;
     var token;
@@ -21,21 +20,29 @@
       }
     }
 
+    function connectSocket(){
+      socket = io(notificationServerUrl,{query: {user_id: user_id}});
+      socket.on('message', function(msg){
+        //$("#chats").html(JSON.stringify(msg));
+      });
+    }
+
     function fetchChats(){
         $.ajax({
         url:apiBaseUrl+"/chat",
         dataType:"json",
         success:function(response){
-          // $("#chats").html(JSON.stringify(response));
           $.each(response.conversations,function(key,value){
             value.title=value.title||value.context.title;
             value.description=value.title||value.context.title;
           });
           user_id=response.user_id;
           var conversations=response.conversations.sort(sortByDate);
-          renderTemplate({chats:conversations,user_id:user_id},"#chats","chat")
+          renderTemplate({chats:conversations,user_id:user_id},"#chats","chat");
+          connectSocket();
         },
         error:function(error){
+                  $("#chats").html("<a href='oneapp://facebookLogin'>Login to continue </a>");
         },
         beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
       });
