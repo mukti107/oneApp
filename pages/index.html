@@ -11,7 +11,7 @@
 		getUserToken();
 		showDateTime();
 		fetchDashboardContent();
-		OneApp.getValue(['access_token','dashboard'],function(resp){
+		OneApp.getValue(['dashboard'],function(resp){
 			var dashboard=JSON.parse(resp.dashboard);
 			loadDashboard(dashboard);
 		});
