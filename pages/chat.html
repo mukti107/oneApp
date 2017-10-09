@@ -9,16 +9,16 @@
     var token;
     var user_id;
     function initPage(){
-      OneApp.getValue(['access_token'],function(resp){
-        token=resp.access_token;
-        fetchChats();
-      });
+      getUserToken();
+    }
 
-      // socket = io(notificationServerUrl,{query: {token: token}});
-        
-      //   socket.on('message', function(msg){
-      //       console.log(msg);
-      //     });
+    function onReceiveUserToken(user_token){
+      if(user_token){
+        token=user_token;
+        fetchChats();
+      }else{
+        $("#chats").html("<a href='oneapp://facebookLogin'>Login to continue </a>");
+      }
     }
 
     function fetchChats(){
@@ -36,11 +36,11 @@
           renderTemplate({chats:conversations,user_id:user_id},"#chats","chat")
         },
         error:function(error){
-          $("#chats").html(JSON.stringify(error));
         },
         beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
       });
     }
+
 
    
 

@@ -38,7 +38,7 @@
           var messageHTML=Mustache.render(template,msg)
           var pos = ($("#content")[0].scrollHeight - $("#content").height() - $("#content").scrollTop());
             $("#messages").append(messageHTML);
-            if(pos  < 50 || msg.sent)$("#content").scrollTop($("#content")[0].scrollHeight);
+            if(pos  < 50 || msg.sents)$("#content").scrollTop($("#content")[0].scrollHeight);
     }
 
     function fetchConversation(){

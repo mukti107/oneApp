@@ -8,10 +8,15 @@
     <script type="text/javascript">
     var token;
     function initPage(){
+      getUserToken();
       OneApp.getValue(['access_token'],function(resp){
-        token=resp.access_token;
+        
       });
       fetchAd();        
+    }
+
+    function onReceiveUserToken(user_token){
+      token=user_token;
     }
 
     function fetchAd(){
@@ -31,7 +36,6 @@
         url:apiBaseUrl+"/advertisment/startchat/"+params['id'],
         dataType:"json",
         success:function(response){
-          // $("#advertisment").html(ROOT_DIR+"page/conversation.html?id="+response.chat_id+"&user="+response.user_id+"_newPage");
           window.location.replace(ROOT_DIR+"pages/conversation.html?id="+response.chat_id+"&user="+response.user_id+"_newPage");
         },
         error:function(error){

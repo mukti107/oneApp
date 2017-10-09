@@ -95,7 +95,6 @@
 					renderTemplate(response,"#user_info","user_info")
 				},
 				error:function(err,stat,resp){
-					//renderTemplate({name:"Guest"},"#user_info","user_info")
 					if(err.status==401)
 						renderTemplate({logged:false},"#user_info","user_info")
 					console.log(err);
@@ -109,24 +108,6 @@
 		}
 	}
 
-
-	function facebookLogin(token){
-		$.ajax({
-			url:apiBaseUrl+"/login",
-			method:"GET",
-			data:{fb_token:token},
-			dataType:"json",
-			success:function(resp){
-				command("saveValues?access_token="+resp.access_token+"&refresh_token="+resp.refresh_token);
-			},
-			error:function(err){
-				//if(err.rea)
-				//alert("Error logging in");
-			},
-			beforeSend:function(){command("showProgress");},
-	        complete:function(xhr){command("dismissProgress");}
-		});
-	}
 
 	</script>
 </head>
