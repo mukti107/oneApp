@@ -1,0 +1,25 @@
+<ul>
+{{#chats}}
+     <li>
+      <a href="conversation.html?id={{id}}&title={{title}}&user={{user_id}}_newPage" class="item-link item-content">
+        <div class="item-inner">
+          <div class="item-title-row">
+            <div class="item-title">{{title}}</div>
+            <div class="item-after">{{last_message.sent}}</div>
+          </div>
+          <div class="item-subtitle">{{last_message.message}}</div>
+        </div>
+      </a>
+    </li>
+{{/chats}}
+{{^chats}}
+	<li class="item-content">
+	    <div class="item-inner">
+	      <div class="item-title-row">
+	        <div class="item-title">No conversation found</div>
+	      </div>
+	      <div class="item-text">Your conversations history will appear here after you start conversation.</div>
+	    </div>
+    </li>
+{{/chats}}
+</ul>

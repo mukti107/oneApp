@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>CHAT</title>
+  	<script type="text/javascript" src="../js/platform.js"></script>
+
+
+    <script type="text/javascript">
+    var socket;
+    var token;
+
+    
+
+    var template = `
+          <div class="message {{#sent}}message-sent{{/sent}}{{^sent}} message-received {{/sent}}">
+            <div class="message-name">{{name}}</div>
+            <div class="message-text">{{message}}</div>
+            <div class="message-date">{{date}}</div>
+          </div>`;
+
+    function initPage(){
+      OneApp.getValue(['access_token'],function(resp){
+        token=resp.access_token;
+        fetchConversation();
+      });
+
+      socket = io(notificationServerUrl,{query: {user_id: params['user'],chat_id:params["id"]}});
+        
+        socket.on('message', function(msg){
+            showMessage(msg);
+          });
+    }
+
+    function showMessage(msg){
+      msg.sent = msg.user_id == params['user'];
+          if(msg.sent)
+            msg.name="You";
+          var messageHTML=Mustache.render(template,msg)
+          var pos = ($("#content")[0].scrollHeight - $("#content").height() - $("#content").scrollTop());
+            $("#messages").append(messageHTML);
+            if(pos  < 50 || msg.sent)$("#content").scrollTop($("#content")[0].scrollHeight);
+    }
+
+    function fetchConversation(){
+      $.ajax({
+        url:apiBaseUrl+"/chat/"+params['id'],
+        dataType:"json",
+        success:function(response){
+          $("#messages").html('');
+          $.each(response,function(key,msg){showMessage(msg)});
+        },
+        error:function(error){
+        },
+        beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
+      });
+    }
+
+    function sendMessage(){
+      
+      var message=$("#message").val().trim();
+      if(!message.length)
+        return;
+      socket.emit('message', {chat_id:params['id'],user_id:params['user'], message:message});
+      $("#message").val("").focus();
+
+      $.ajax({
+        url:apiBaseUrl+"/chat",
+        dataType:"json",
+        method:'POST',
+        data:{message:message,chat_id:params['id']},
+        success:function(response){
+        },
+        error:function(error){
+        },
+        beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
+      }
+      ); 
+
+      
+    }
+
+    
+
+    </script>
+  </head>
+  <body>
+    <div class="views">
+        <div class="view view-main">
+          <div class="pages">
+            <div class="page toolbar-fixed" data-page="home">
+
+            <div class="toolbar messagebar">
+              <div class="toolbar-inner">
+                <textarea onkeypress="if(event.keyCode==13){sendMessage(); return false;}" id="message" placeholder="Your message"></textarea>
+                <a href="javascript:sendMessage()" class="link">Send</a>
+              </div>                
+            </div>
+
+              <div id="content" class="page-content messages-content">
+                <div class="messages" id="messages">
+                </div>
+              </div>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

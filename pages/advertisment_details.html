@@ -3,36 +3,46 @@
   <head>
   	<title>ADVERTISMENTS</title>
   	<script type="text/javascript" src="../js/platform.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    
 
     <script type="text/javascript">
-    var socket;
     var token;
     function initPage(){
       OneApp.getValue(['access_token'],function(resp){
         token=resp.access_token;
       });
-      fetchAds();        
-        
+      fetchAd();        
     }
 
-    function fetchAds(){
+    function fetchAd(){
         $.ajax({
-        url:apiBaseUrl+"/advertisment",
+        url:apiBaseUrl+"/advertisment/"+params["id"],
         dataType:"json",
         success:function(response){
-          renderTemplate({advertisments:response},"#advertisments","advertismentList");
+          renderTemplate(response,"#advertisment","advertismentDetails");
+        },
+        error:function(error){}
+      });
+  }
+
+
+  function startChat(){
+      $.ajax({
+        url:apiBaseUrl+"/advertisment/startchat/"+params['id'],
+        dataType:"json",
+        success:function(response){
+          // $("#advertisment").html(ROOT_DIR+"page/conversation.html?id="+response.chat_id+"&user="+response.user_id+"_newPage");
+          window.location.replace(ROOT_DIR+"pages/conversation.html?id="+response.chat_id+"&user="+response.user_id+"_newPage");
         },
         error:function(error){
-          $("#chats").html(JSON.stringify(error));
+          $("#advertisment").html(JSON.stringify(error));
         },
         beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
-      });
-    }
+      }
+      ); 
+  }
 
-    function sendMessage(){
-      socket.emit('message', "hello");
-    }
+   
 
     
 
@@ -44,7 +54,7 @@
           <div class="pages">
             <div class="page" data-page="home">
               <div id="content" class="page-content">                
-                <div class="list-block" id="advertisments"></div>
+                <div class="list-block" id="advertisment"></div>
               </div>
             </div>
           </div>

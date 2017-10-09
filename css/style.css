@@ -6,7 +6,7 @@
 	height: auto !important;
 }
 
-.navbar, .subnavbar, .toolbar{
+.navbar, .subnavbar{
 	background: #db4437;
 }
 
@@ -164,6 +164,10 @@
 
 .clearfix{
 	clear: both;
+}
+
+img{
+  max-width: 100%;
 }
 
 

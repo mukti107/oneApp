@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>News Feeds</title>
+  	<script type="text/javascript" src="../js/platform.js"></script>
+    <script type="text/javascript">
+    var loading=false;
+    var currentPage=0;
+    
+    function initPage(){
+      $.ajax({
+          type:"GET",
+          url:apiBaseUrl+"/news_content",
+          data:{url:params.link},
+          dataType:"json",
+          success:function(response){
+              renderTemplate(response,"#content","read_news");
+          },
+          error:function(){renderTemplate({},"#content","no_connection")},
+          beforeSend:function(){loading=true; command("showProgress")},
+          complete:function(){loading=false;command("dismissProgress");}
+        });
+    }
+
+    function load(page){
+      
+      
+      
+    }
+
+    function loadMore(){
+      load(currentPage+1);
+    }
+
+    </script>
+  </head>
+  <body>
+    <div class="views">
+        <div class="view view-main">
+          <div class="pages">
+            <div class="page" data-page="home">
+              <div id="content" class="page-content">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

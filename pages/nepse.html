@@ -9,20 +9,19 @@
     command("showMenuIcons?search");
     $.ajax({
         type:"GET",
-        url:"http://anyorigin.com/go",
-         data:{url:"http://www.nepalstock.com/todaysprice/export"},
-         dataType:"jsonp",
+        url:apiBaseUrl+"/stock",
+         
+         dataType:"json",
         success:function(response){
-
-          var list=tableTOJSON($(response.contents),["name","num_transaction","max_price","min_price","closing_price","traded_shares","amount","previous_closing","difference"]);
-
-          $.map(list,function(el){
-            el.increased = el.difference>0; 
-            el.difference = Math.abs(el.difference); 
+          //["name","num_transaction","max_price","min_price","closing_price","traded_shares","amount","previous_closing","difference"]
+          var list=$.map(response,function(el){
+            var resp={name:el[0],max_price:el[2],min_price:el[3],closing_price:el[4]};
+            resp.increased = el[8]>0; 
+            resp.difference = Math.abs(el[8]); 
+            return resp;
           });
 
           displayList({items:list},"#content","nepse");
-          // $("h1").html(JSON.stringify()));
         },
         error:function(){renderTemplate({},"#content","no_connection")},
         beforeSend:function(){command("showProgress")},

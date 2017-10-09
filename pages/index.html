@@ -43,9 +43,11 @@
 	}
 
 	function updateWeather(weather){
-		$("#weather_location").html(weather.location);
-		$("#weather_temprature").html(weather.temp+"&deg;C");
-		$("#weather_description").html(weather.text);
+		if(weather){
+			$("#weather_location").html(weather.location);
+			$("#weather_temprature").html(weather.temp+"&deg;C");
+			$("#weather_description").html(weather.text);
+		}
 	}
 
 	function showDateTime(){
