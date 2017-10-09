@@ -7,6 +7,7 @@
     var socket;
     var token;
     var user_id;
+    var conversations={};
     function initPage(){
       getUserToken();
     }
@@ -23,7 +24,8 @@
     function connectSocket(){
       socket = io(notificationServerUrl,{query: {user_id: user_id}});
       socket.on('message', function(msg){
-        //$("#chats").html(JSON.stringify(msg));
+        conversations[msg.chat_id].last_message=msg;
+        renderConversations();
       });
     }
 
@@ -37,15 +39,25 @@
             value.description=value.title||value.context.title;
           });
           user_id=response.user_id;
-          var conversations=response.conversations.sort(sortByDate);
-          renderTemplate({chats:conversations,user_id:user_id},"#chats","chat");
-          connectSocket();
+          conversations = response.conversations;
+          renderConversations();
+          
+          if(!socket)
+            connectSocket();
+
         },
         error:function(error){
                   $("#chats").html("<a href='oneapp://facebookLogin'>Login to continue </a>");
         },
         beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
       });
+    }
+
+
+    function renderConversations(){
+      var unsorted_conversations = Object.values(conversations);
+      var sorted_conversations = unsorted_conversations.sort(sortByDate);
+      renderTemplate({chats:sorted_conversations,user_id:user_id},"#chats","chat");
     }
 
 
