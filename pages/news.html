@@ -17,13 +17,12 @@
       
       $.ajax({
           type:"GET",
-          url:"https://api.rss2json.com/v1/api.json",
-          data:{rss_url:"https://www.onlinekhabar.com/feed/atom?paged="+page,
-          api_key:"u3dj2rm8zzoq8no7ebxztpcgdklf1zp0b0jtc1n3"},
+          url:apiBaseUrl+"/news_feeds",
+          data:{page:page},
           dataType:"json",
           success:function(response){
             currentPage=page;
-              $.each(response.items,function(key,item){item.image=$("img","<div>"+item.content+"</div>").attr("src")});
+              $.each(response,function(key,item){item.image=$("img","<div>"+item.content+"</div>").attr("src")});
               $("<div id='news_for_page_"+page+"'></div>").appendTo("#content");
               renderTemplate(response,"#news_for_page_"+page,"news_card");
           },
