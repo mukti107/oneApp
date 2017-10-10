@@ -33,8 +33,10 @@
 
     function showMessage(msg){
       msg.sent = msg.user_id == params['user'];
+          msg.name=msg.user&&msg.user.name
           if(msg.sent)
             msg.name="You";
+
           var messageHTML=Mustache.render(template,msg)
           var pos = ($("#content")[0].scrollHeight - $("#content").height() - $("#content").scrollTop());
             $("#messages").append(messageHTML);
