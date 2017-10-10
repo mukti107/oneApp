@@ -1,14 +1,19 @@
-<ul>
+
 {{#advertisments}}
 <a href="advertisment_details.html?id={{id}}&title={{title}}_newPage" class="item-link item-content card">
-<li>
-      <div class="card-header">{{title}}</div>
-      <div class="card-content">
-        <div class="card-content-inner">
-        	{{{description}}}
-        	{{#images.0}}sdf<img src="{{url}}" width="100%">{{/images.0}}
-        </div>
-      </div>
-    </li>
+	<div class="card demo-card-header-pic">
+	{{#images.0}}
+	  <div style="background-image:url({{images.0.url}})" valign="bottom" class="card-header color-white no-border">{{{title}}}</div>
+	  {{/images.0}}
+
+	  <div class="card-content">
+	    <div class="card-content-inner">
+		    {{^images.0}}
+		  	<h3>{{title}}</h3>
+		  {{/images.0}}
+	      <p style="color:#333;">{{description}}</p>
+	    </div>
+	  </div>
+	</div>
+</a>
 {{/advertisments}}
-</ul>
