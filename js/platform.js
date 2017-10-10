@@ -146,19 +146,25 @@ function requestURL(url){
 }
 
 function facebookLogin(token){
-		$.ajax({
-			url:apiBaseUrl+"/login",
-			method:"GET",
-			data:{fb_token:token},
-			dataType:"json",
-			success:function(resp){
-				command("saveValues?access_token="+resp.access_token+"&refresh_token="+resp.refresh_token);
-			},
-			error:function(err){
-			},
-			beforeSend:function(){command("showProgress");},
-	        complete:function(xhr){command("dismissProgress");}
+	OneApp.getValue(['fcm_token'],function(resp){
+			var fcm_token=resp.fcm_token||"";
+			$.ajax({
+				url:apiBaseUrl+"/login",
+				method:"GET",
+				data:{fb_token:token,fcm_token:fcm_token},
+				dataType:"json",
+				success:function(resp){
+					command("saveValues?access_token="+resp.access_token+"&refresh_token="+resp.refresh_token);
+					if(typeof onReceiveUserToken !="undefined")onReceiveUserToken(resp.access_token);
+				},
+				error:function(err){
+					alert(error);
+				},
+				beforeSend:function(){command("showProgress");},
+		        complete:function(xhr){command("dismissProgress");}
+			});	
 		});
+		
 	}
 
 

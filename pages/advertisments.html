@@ -15,12 +15,13 @@
       fetchAds();        
         
     }
-
+    
     function fetchAds(){
         $.ajax({
         url:apiBaseUrl+"/advertisment",
         dataType:"json",
         success:function(response){
+          console.log(response);
           renderTemplate({advertisments:response},"#advertisments","advertismentList");
         },
         error:function(error){
@@ -29,13 +30,6 @@
         beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
       });
     }
-
-    function sendMessage(){
-      socket.emit('message', "hello");
-    }
-
-    
-
     </script>
   </head>
   <body>
@@ -44,7 +38,7 @@
           <div class="pages">
             <div class="page" data-page="home">
               <div id="content" class="page-content">                
-                <div class="list-block" id="advertisments"></div>
+                <div id="advertisments" class="list-block cards-list"></div>
               </div>
             </div>
           </div>
