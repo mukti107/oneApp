@@ -8,6 +8,7 @@
     var socket;
     var token;
     var category=params.category;
+    var query=params.query;
     if(category)document.title=categories[category].name;
     function initPage(){
       OneApp.getValue(['access_token'],function(resp){
@@ -19,7 +20,7 @@
     function fetchAds(){
         $.ajax({
         url:apiBaseUrl+"/advertisment",
-        data:{category:category},
+        data:{category:category,query:query},
         dataType:"json",
         success:function(response){
           renderTemplate({advertisments:response.data},"#content","advertismentList");
