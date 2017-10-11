@@ -75,10 +75,10 @@
         error:function(error){
         },
         beforeSend: function (xhr) {
-          input.prop(readonly,true);
+          input.prop('readonly',true);
           xhr.setRequestHeader('Authorization', "Bearer "+token);
         },
-        complete:function(){input.prop(readonly,false);}
+        complete:function(){input.prop('readonly',false);}
       }
       ); 
 
