@@ -9,7 +9,7 @@
 
 	function initPage(){
 		getUserToken();
-		showDateTime();
+		//showDateTime();
 		fetchDashboardContent();
 		OneApp.getValue(['dashboard'],function(resp){
 			var dashboard=JSON.parse(resp.dashboard);
@@ -35,7 +35,7 @@
 	}
 
 	function loadDashboard(response){
-		updateWeather(response.weather);
+		//updateWeather(response.weather);
 		$.each(response.news,function(key,item){
 			item.title=htmlDecode(item.title);
 		});
@@ -119,7 +119,6 @@
         <div class="view view-main">
           <div class="pages">
             <div class="page navbar-fixed " data-page="home">
-            
 	            <div class="navbar row landing_page_title_bar">
 	              	<a href="oneapp://toggleMenu"><img src="/icons/menu.png" class="menu_icon" /></a>
 	              	<div id="user_info" style="margin-top:5px">
@@ -127,22 +126,48 @@
               </div>
               <div  class="page-content landing_page_bg">
               <div id="content">
-              	<div class="row no-gutter">
-              		<div class="col-50 home_menu_item text-center date_time tile" style="position:relative;background-color:{{bgColor}};">
+              	<!-- <div class="row no-gutter">
+              		<div class="col-50 home_menu_item text-center date_time tile" style="position:relative;">
 						<div class="absolute-center text-white">
 							<h1 id="nepali_time"></h1>
 							<span id="nepali_date"></span>
 						</div>
 					</div>
-					<div class="col-50 home_menu_item text-center weather tile" style="position:relative;background-color:{{bgColor}};">
+					<div class="col-50 home_menu_item text-center weather tile" style="position:relative;;">
 						<div class="overlay"></div>
 						<div class="absolute-center text-white">
 							<h2><span id="weather_location"></span> <span id="weather_temprature"></span></h2>
 							<h2 id="weather_description"></h2>
 						</div>
 					</div>
+              </div> -->
+
+              <div class="no-gutter">
+              	<div class="list-block inset">
+				  <ul>
+				  	
+					    <li>
+					    	<form action="advertisments.html_newPage">
+					      <div class="item-content">
+					        <div class="item-inner">
+					          <div class="item-input">
+					            <input name="query" type="text" class="text-center" placeholder="SEARCH FOR ADVERTISMENTS">
+					          </div>
+					        </div>
+					        <button class="button item-media color-green"><i class="icon f7-icons">search</i></button>
+					      </div>
+					      </form>
+					    </li>
+				    
+				    <li><a href="advertisments.html?category=_newPage" class="list-button item-link text-center">FIND JOBS & VACANCY</a></li>
+				    <li><a href="advertisments.html?category=_newPage" class="list-button item-link text-center">FIND HOUSE AND APARTMENTS</a></li>
+				    <li><a href="advertisments.html_newPage" class="list-button item-link text-center">SEE ALL ADVERTISMENTS</a></li>
+				    <li>
+		              <a href="post_advertisment.html_newPage" class="list-button item-link text-center button-fill color-green">POST YOUR ADVERTISMENT FREE</a>
+				    </li>
+				  </ul>
+				</div>
               </div>
-             
 
               <div class="row no-gutter" id="dashboard_news"></div>
 
