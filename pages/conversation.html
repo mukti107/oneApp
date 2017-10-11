@@ -69,11 +69,8 @@
         dataType:"json",
         method:'POST',
         data:{message:message,chat_id:params['id']},
-        success:function(response){
-          alert("success");
-          messageInput.val("").focus();
-        },
-        error:function(error){alert("error");},
+        success:function(response){messageInput.val("").focus();},
+        error:function(error){},
         beforeSend: function (xhr) {
           messageInput.prop('readonly',true);
           xhr.setRequestHeader('Authorization', "Bearer "+token);
