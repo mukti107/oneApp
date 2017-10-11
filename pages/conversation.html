@@ -58,23 +58,27 @@
     }
 
     function sendMessage(){
-      
+      var input = $("#message");      
       var message=$("#message").val().trim();
       if(!message.length)
         return;
-      socket.emit('message', {chat_id:params['id'],user_id:params['user'], message:message});
-      $("#message").val("").focus();
 
+      
       $.ajax({
         url:apiBaseUrl+"/chat",
         dataType:"json",
         method:'POST',
         data:{message:message,chat_id:params['id']},
         success:function(response){
+          input.val("").focus();
         },
         error:function(error){
         },
-        beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
+        beforeSend: function (xhr) {
+          input.prop(readonly,true);
+          xhr.setRequestHeader('Authorization', "Bearer "+token);
+        },
+        complete:function(){input.prop(readonly,false);}
       }
       ); 
 
