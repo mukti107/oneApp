@@ -3,30 +3,28 @@
   <head>
   	<title>ADVERTISMENTS</title>
   	<script type="text/javascript" src="../js/platform.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-
+    <script type="text/javascript" src="../js/categories.js"></script>
     <script type="text/javascript">
     var socket;
     var token;
+    var category=params.category;
+    if(category)document.title=categories[category].name;
     function initPage(){
       OneApp.getValue(['access_token'],function(resp){
         token=resp.access_token;
       });
       fetchAds();        
-        
     }
 
     function fetchAds(){
         $.ajax({
         url:apiBaseUrl+"/advertisment",
+        data:{category:category},
         dataType:"json",
         success:function(response){
-          console.log(response);
-          renderTemplate({advertisments:response},"#advertisments","advertismentList");
+          renderTemplate({advertisments:response.data},"#content","advertismentList");
         },
-        error:function(error){
-          $("#chats").html(JSON.stringify(error));
-        },
+        error:function(error){renderTemplate({},"#content","no_connection")},
         beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
       });
     }
@@ -38,7 +36,6 @@
           <div class="pages">
             <div class="page" data-page="home">
               <div id="content" class="page-content">                
-                <div id="advertisments"></div>
               </div>
             </div>
           </div>
