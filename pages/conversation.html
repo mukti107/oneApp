@@ -58,8 +58,8 @@
     }
 
     function sendMessage(){
-      var input = $("#message");      
-      var message=$("#message").val().trim();
+      var messageInput = $("#message");      
+      var message=messageInput.val().trim();
       if(!message.length)
         return;
 
@@ -69,13 +69,15 @@
         dataType:"json",
         method:'POST',
         data:{message:message,chat_id:params['id']},
-        success:function(response){alert(JSON.stringify(response));input.val("").focus();},
-        error:function(error){alert(JSON.stringify(error));},
+        success:function(response){
+          messageInput.val("").focus();
+        },
+        error:function(error){},
         beforeSend: function (xhr) {
-          input.prop('readonly',true);
+          messageInput.prop('readonly',true);
           xhr.setRequestHeader('Authorization', "Bearer "+token);
         },
-        complete:function(){input.prop('readonly',false);}
+        complete:function(){messageInput.prop('readonly',false);}
       }
       ); 
 
