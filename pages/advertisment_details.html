@@ -23,6 +23,7 @@
         success:function(response){
           renderTemplate(response,"#advertisment","advertismentDetails");
           if(response.is_owner){
+            command("showMenuIcons?edit");
             $("#startChat").hide()
           }else{
             $("#startChat").show()
