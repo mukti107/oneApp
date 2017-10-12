@@ -8,8 +8,8 @@
 		enableNavBar="NO";
 
 	function initPage(){
-		getUserToken();
 		renderTemplate({},"#page","index",function(){
+			getUserToken();
 			fetchDashboardContent();
 			OneApp.getValue(['dashboard'],function(resp){
 				var dashboard=JSON.parse(resp.dashboard);
