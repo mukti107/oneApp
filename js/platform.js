@@ -147,6 +147,7 @@ function requestURL(url){
 }
 
 function facebookLogin(token){
+	alert(token);
 	OneApp.getValue(['fcm_token'],function(resp){
 			var fcm_token=resp.fcm_token||"";
 			$.ajax({
