@@ -13,10 +13,10 @@
     
 
     var template = `
-          <div class="message {{#sent}}message-sent{{/sent}}{{^sent}} message-received {{/sent}}">
+          <div class="message {{#outgoing}}message-sent{{/outgoing}}{{^outgoing}} message-received {{/outgoing}}">
             <div class="message-name">{{name}}</div>
             <div class="message-text">{{message}}</div>
-            <div class="message-date">{{date}}</div>
+            <div class="message-date">{{sent}}</div>
           </div>`;
 
     function initPage(){
@@ -34,15 +34,15 @@
     }
 
     function showMessage(msg){
-      msg.sent = msg.user_id == params['user'];
+      msg.outgoing = msg.user_id == params['user'];
           msg.name=msg.user&&msg.user.name
-          if(msg.sent)
+          if(msg.outgoing)
             msg.name="You";
 
           var messageHTML=Mustache.render(template,msg)
           var pos = ($("#content")[0].scrollHeight - $("#content").height() - $("#content").scrollTop());
             $("#messages").append(messageHTML);
-            if(pos  < 50 || msg.sents)$("#content").scrollTop($("#content")[0].scrollHeight);
+            if(pos  < 50 || msg.outgoing)$("#content").scrollTop($("#content")[0].scrollHeight);
     }
 
     function fetchConversation(){

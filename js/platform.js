@@ -245,10 +245,11 @@ Mustache.Formatters = {
 			return (filler + str).slice(-num);
 		},
 		"date": function (dt) {
+			var date=new Date(dt);
 			var lpad  = Mustache.Formatters.lpad, 
-				day   = lpad(dt.getDate(), 2, "0"),
-				month = lpad(dt.getMonth()+1, 2, "0");
-			return  day + "/" + month + "/" + dt.getFullYear();
+				day   = lpad(date.getDate(), 2, "0"),
+				month = lpad(date.getMonth()+1, 2, "0");
+			return  day + "/" + month + "/" + date.getFullYear();
 		}
 	};
 
