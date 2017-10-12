@@ -1,0 +1,33 @@
+
+<div class="list-block inset">
+<div class="content-block-title">PLEASE SELECT A CATEGORY</div>
+<ul>
+	{{#.}}
+	<li>
+		<a class="item-link" href="advertisments.html?category={{id}}_newPage">
+		<div class="item-content">
+          <div class="item-inner">
+            <div class="item-title">{{name}}</div>
+          </div>
+     	</div>
+     	</a>
+    </li>
+	{{/.}}
+	{{^.}}
+	<li>
+		<div class="item-content">
+          <div class="item-inner">
+            <div class="item-title">No sub categories to display</div>
+          </div>
+     	</div>
+    </li>
+	{{/.}}
+	<li onclick="dismissCategoriesSelect()">
+			<div class="item-content">
+	          <div class="item-inner">
+	            <div class="item-title color-pink">DISMISS</div>
+	          </div>
+	     	</div>
+    </li>
+</ul>
+</div>

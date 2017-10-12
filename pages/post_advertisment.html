@@ -120,16 +120,7 @@
 
       }
 
-      function getCategoryTree(index,full){
-      	var curentNode=index;
-      	var tree=[];
-      	while(curentNode && (curentNode != selected || full)){ 
-      		var node=categories[curentNode];
-      		tree.push(node);
-      		curentNode=node.parent
-      	}
-      	return tree.reverse();
-      }
+      
 
       function selectImage(){
         	var file=$("<input type='file' style='display:none;' accept='image/*' />");

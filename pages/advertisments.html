@@ -4,12 +4,29 @@
   	<title>ADVERTISMENTS</title>
   	<script type="text/javascript" src="../js/platform.js"></script>
     <script type="text/javascript" src="../js/categories.js"></script>
+    <style type="text/css">
+      #selectCategory{
+        z-index: 6000;
+        width: 90vw;
+        max-height: 90vh;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top:50%;
+        left:50%;
+        right: 0;
+        background: #fff;
+        overflow:scroll;
+        border:1px solid #e8e8e8;
+        border-radius: 50px;
+        display: none;
+      }
+    </style>
     <script type="text/javascript">
     var socket;
     
-    var category=params.category;
+    var selectedCategory=params.category;
     var query=params.query;
-    if(category)document.title=categories[category].name;
+    if(selectedCategory)document.title=categories[selectedCategory].name;
     function initPage(){
       command("showMenuIcons?search&category");
       fetchAds();        
@@ -19,10 +36,23 @@
       fetchAds();
     }
 
+    function category(){
+
+      if($("#selectCategory").is(":visible")){ dismissCategoriesSelect(); return;}
+
+      var childs=childCategories(selectedCategory||null);
+      renderTemplate(childs,"#selectCategory","categorySelect")
+      $("#selectCategory").fadeIn();
+    }
+
+    function dismissCategoriesSelect(){
+      $("#selectCategory").fadeOut();
+    }
+
     function fetchAds(){
         $.ajax({
         url:apiBaseUrl+"/advertisment",
-        data:{category:category,query:query},
+        data:{category:selectedCategory,query:query},
         dataType:"json",
         success:function(response){
           renderTemplate({advertisments:response.data},"#content","advertismentList");
@@ -45,5 +75,9 @@
           </div>
         </div>
       </div>
+
+      <div id="selectCategory"></div>
+      
+
   </body>
 </html>
