@@ -23,9 +23,9 @@
         success:function(response){
           renderTemplate(response,"#advertisment","advertismentDetails");
           if(response.is_owner){
-            $("#startchat").hide()
+            $("#startChat").hide()
           }else{
-            $("#startchat").show()
+            $("#startChat").show()
           }
         },
         error:function(error){},
