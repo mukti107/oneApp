@@ -70,7 +70,7 @@
         method:'POST',
         data:{message:message,chat_id:params['id']},
         success:function(response){messageInput.val("").focus();},
-        error:function(error){},
+        error:function(error){alert(JSON.stringify(error));},
         beforeSend: function (xhr) {
           messageInput.prop('readonly',true);
           xhr.setRequestHeader('Authorization', "Bearer "+token);
