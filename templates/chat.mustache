@@ -5,7 +5,7 @@
         <div class="item-inner">
           <div class="item-title-row">
             <div class="item-title">{{title}}</div>
-            <div class="item-after">{{last_message.sent}}</div>
+            <div class="item-after">{{last_message.sent | date}}</div>
           </div>
           <div class="item-subtitle">{{last_message.user.name}} : {{last_message.message}}</div>
         </div>
