@@ -158,9 +158,7 @@ function facebookLogin(token){
 					command("saveValues?access_token="+resp.access_token+"&refresh_token="+resp.refresh_token);
 					if(typeof onReceiveUserToken !="undefined")onReceiveUserToken(resp.access_token);
 				},
-				error:function(err){
-					alert(error);
-				},
+				error:function(err){},
 				beforeSend:function(){command("showProgress");},
 		        complete:function(xhr){command("dismissProgress");}
 			});	
