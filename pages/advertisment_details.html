@@ -9,8 +9,6 @@
     var token;
     function initPage(){
       getUserToken();
-      OneApp.getValue(['access_token'],function(resp){
-      });
       fetchAd();        
     }
 
@@ -38,7 +36,9 @@
           window.location.replace(ROOT_DIR+"pages/conversation.html?id="+response.chat_id+"&user="+response.user_id+"_newPage");
         },
         error:function(error){
-          $("#advertisment").html(JSON.stringify(error));
+          if(error.status==401){
+            command("facebookLogin");
+          }
         },
         beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
       }

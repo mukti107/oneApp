@@ -11,7 +11,7 @@
     var query=params.query;
     if(category)document.title=categories[category].name;
     function initPage(){
-      command("showMenuIcons?search");
+      command("showMenuIcons?search&category");
       fetchAds();        
     }
     function searchQuery(q){
