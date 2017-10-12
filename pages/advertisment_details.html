@@ -22,7 +22,7 @@
         dataType:"json",
         success:function(response){
           renderTemplate(response,"#advertisment","advertismentDetails");
-          if(response.isOwner){
+          if(response.is_owner){
             $("#startchat").hide()
           }else{
             $("#startchat").show()
