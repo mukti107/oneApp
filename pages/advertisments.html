@@ -11,10 +11,16 @@
     var query=params.query;
     if(category)document.title=categories[category].name;
     function initPage(){
+      command("showMenuIcons?search");
       OneApp.getValue(['access_token'],function(resp){
         token=resp.access_token;
       });
       fetchAds();        
+    }
+
+    function searchQuery(q){
+      query=q;
+      fetchAds();
     }
 
     function fetchAds(){
