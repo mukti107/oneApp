@@ -11,12 +11,20 @@
     	var token=null;
     	var images=[];
       function initPage(){
+      		getUserToken();
 			selectCategory(null);        
 			command("showMenuIcons?search");
-			selectStep(1);
 			renderTemplate({images:images},"#upload_images","images");
-			OneApp.getValue(['access_token'],function(resp){token=resp.access_token;});
       }
+
+      function onReceiveUserToken(user_token){
+      if(user_token){
+        selectStep(1);
+      }else{
+        renderTemplate({},"#login","login_to_continue");
+        selectStep(4);
+      }
+    }
 
       function searchTextChange(query){
       		setTimeout(function(){searchCategory(query)},0);
@@ -42,7 +50,7 @@
       }
 
       function selectStep(step){
-      	var views=["categories_view","details_view","success_view"];
+      	var views=["categories_view","details_view","success_view","login"];
       	$.each(views,function(key,value){
       		if($("#"+value).is(":visible"))
       			$("#"+value).slideUp();
@@ -59,6 +67,8 @@
       		case 3:
       		$("#success_view").slideDown();
       		break;
+      		case 4:
+      		$("#login").slideDown();
       	}
       }
 
@@ -327,6 +337,19 @@
 	    
 
 	    <div class="view" id="success_view" style="display: none;">
+          <div class="pages">
+            <div class="page" data-page="home">
+            	<div class="page-content">
+	            	<div class="absolute-center text-center color-green">
+	            		<i class="f7-icons color-green size-100">check_round</i><br/><br/>
+	            		Congratulations!! Your advertisment has been posted succesfully.
+	        		</div>
+		     	</div>
+	      	</div>
+	      </div>
+	    </div>
+
+	    <div class="view" id="login" style="display: none;">
           <div class="pages">
             <div class="page" data-page="home">
             	<div class="page-content">
