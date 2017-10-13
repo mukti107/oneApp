@@ -156,6 +156,8 @@ function facebookLogin(token){
 				dataType:"json",
 				success:function(resp){
 					command("saveValues?access_token="+resp.access_token+"&refresh_token="+resp.refresh_token);
+					if(!isDashboard)
+						command("userLoginStatusChanged");
 					if(typeof onReceiveUserToken !="undefined")onReceiveUserToken(resp.access_token);
 				},
 				error:function(err){},
