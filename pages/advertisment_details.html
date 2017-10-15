@@ -7,6 +7,7 @@
 
     <script type="text/javascript">
     var token;
+    var details;
     function initPage(){
       getUserToken();        
     }
@@ -21,6 +22,7 @@
         url:apiBaseUrl+"/advertisment/"+params["id"],
         dataType:"json",
         success:function(response){
+          details=response;
           renderTemplate(response,"#advertisment","advertismentDetails");
           if(response.is_owner){
             command("showMenuIcons?edit");
@@ -32,6 +34,10 @@
         error:function(error){},
         beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
       });
+  }
+
+  function edit(){
+    OneApp.popup("editor");
   }
 
 
