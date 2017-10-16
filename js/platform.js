@@ -91,20 +91,19 @@ function displayList($data, $to, $template_name){
 
 function renderTemplate($data,$to,$template,$callback){
 
-	prepareTemplate($data,$template).then(function(html){
+	prepareTemplate($data,$template,function(html){
 		$($to).html(html);
 		if($callback)
 			$callback();
 	});
 }
 
-function prepareTemplate($data,$template){
-	return new Promise(function(resolve,reject){
+function prepareTemplate($data,$template,$callback){
+	
 		var template_path=ROOT_DIR+"templates/"+$template+".mustache";
 		$.get(template_path,function(resp){
 		var $template=Mustache.render(resp,$data);
-		resolve($template)
-		});	
+		$callback($template)
 	});
 	
 }
