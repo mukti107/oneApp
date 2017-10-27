@@ -12,7 +12,7 @@ OneApp.getValue=function(keys,callback){
 }
 
 OneApp.alert = function(data,template){
-	prepareTemplate(data,template).then(function(html){
+	prepareTemplate(data,template,function(html){
 		var popup=$("<div class='popup'>"+html+"</div>");
 		$("body").append(popup);
 		popup.fadeIn();

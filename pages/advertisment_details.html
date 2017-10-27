@@ -8,8 +8,10 @@
     <script type="text/javascript">
     var token;
     var details;
+    var myApp;
     function initPage(){
       getUserToken();        
+      myApp = new Framework7()
     }
 
     function onReceiveUserToken(user_token){
@@ -36,8 +38,39 @@
       });
   }
 
+  function markAsSold(){
+        myApp.modal({
+          title:"Confirm",
+          text:"Are you sure you want to mark this item as sold",
+          buttons:[{
+            text:"Yes"
+          },{
+            text:"No"
+          }
+          ]
+        });
+  }
+
   function edit(){
-    OneApp.popup("editor");
+
+    var buttons = [
+          {
+              text: 'EDIT ADVERTISMENT',
+              label: true
+          },
+          {
+              text: 'Mark as sold',
+              color: 'red',
+              onClick:markAsSold,
+              bold: true
+          },
+          {
+              text: 'Cancel',
+              color: 'red'
+          },
+      ];
+    myApp.actions(buttons);
+
   }
 
 
