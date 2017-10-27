@@ -203,7 +203,6 @@
 				images:images,
 				category_id:selected
 			};
-			alert(token);
 			$.ajax({
 				url:apiBaseUrl+"/advertisment",
 				dataType:"json",
@@ -213,7 +212,7 @@
 					selectStep(3);
 				},
 				error:function(err,stat,resp){
-					command("alert",{message:"An error occoured posting the adsvertisment"});
+					command("alert",{message:"Please fill all fields Title, Price, Deadline and Description try posting advertisment again."});
 					if(err.status==401){
 						
 					}
