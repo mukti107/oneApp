@@ -19,6 +19,7 @@
 
       function onReceiveUserToken(user_token){
       if(user_token){
+      	token=user_token;
         selectStep(1);
       }else{
         renderTemplate({},"#login","login_to_continue");
