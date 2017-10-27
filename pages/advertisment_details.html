@@ -11,7 +11,7 @@
     var myApp;
     function initPage(){
       getUserToken();        
-      myApp = new Framework7()
+      myApp = new Framework7({modalTitle:"OneApp"});
     }
 
     function onReceiveUserToken(user_token){
@@ -43,7 +43,18 @@
           title:"Confirm",
           text:"Are you sure you want to mark this item as sold",
           buttons:[{
-            text:"Yes"
+            text:"Yes",
+            onClick:function(){
+              $.ajax({
+                      url:apiBaseUrl+"/advertisment/"+params["id"]+"/sold",
+                      method:"post",
+                      dataType:"json",
+                      success:function(response){
+                        myApp.alert("This advertisment has been marked as sold.");
+                      },
+                      beforeSend: function (xhr) {xhr.setRequestHeader('Authorization', "Bearer "+token);}
+                    });
+            }
           },{
             text:"No"
           }
